@@ -1,14 +1,11 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
 const app = express();
-
+const cors = require('cors');
 // Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Configuração de visualização
 app.set('view engine', 'ejs');
 
 const {
@@ -19,7 +16,10 @@ const {
 
 
 // Rotas
-const routes = require('./router/router');
-app.use(routes);
+const cadastroRouter = require('./router/cadastroRouter');
+app.use(cadastroRouter);
+
+const loginRouter = require('./router/loginRouter');
+app.use(loginRouter);
 
 module.exports = app;

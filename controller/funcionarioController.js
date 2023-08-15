@@ -1,1 +1,0 @@
-const funcionarioModel = require('../model/funcionario');
