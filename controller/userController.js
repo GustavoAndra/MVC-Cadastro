@@ -1,26 +1,32 @@
-const usuarioModel = require('../model/usuario');
-const jwt = require("jsonwebtoken");
+const usuarioModel = require('../model/usuarioModel');
 
 class UsuarioController {
     async mostrarFormularioLogin(req, res) {
         res.render('login');
     }
+
     async fazerLogin(req, res) {
-        const { email, senha} = req.body;
+        const { email, senha } = req.body;
 
         try {
-            const usuario = await usuarioModel.verificarExistenciaEmailSenha(email, senha);
-            console.log("Resultado da verificação:", usuario);
-            if (usuario) {
-                const token = jwt.sign({ id: usuario.id }, "mySecretKey", { expiresIn: "1h" });
-
-                return res.json({ autenticado: true, token });
+            // Verifica se o email existe e busca o usuário correspondente
+            const resp = await usuarioModel.verificarExistenciaEmailSenha(email, senha);
+            
+            if (resp) {
+                // Se a senha estiver correta, cria uma sessão para o usuário
+                req.session.user = {
+                    id_usuario: resp.id_usuario,
+                    email: resp.email,
+                    nome: resp.nome
+                };
+                
+                res.redirect('/HomePage'); // Redireciona para a página de logados
             } else {
-                return res.status(401).json({ autenticado: false, mensagem: "Credenciais inválidas" });
+                res.redirect('/login'); // Senha incorreta ou usuário não encontrado
             }
         } catch (error) {
-            console.error(error);
-            return res.status(500).json({ mensagem: "Erro no servidor" });
+            console.log(error);
+            res.redirect('/login');
         }
     }
 }

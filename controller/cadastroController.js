@@ -1,4 +1,4 @@
-const usuarioModel = require('../model/usuario');
+const usuarioModel = require('../model/usuarioModel');
 
 class CadastroController {
     async showCadastroForm(req, res) {
@@ -14,9 +14,9 @@ class CadastroController {
                 return res.status(400).send('Email já cadastrado');
             }
 
-            await usuarioModel.insertEmpresa(nome, email, senha);
+            await usuarioModel.inserirUsuario(nome, email, senha);
             console.log('Empresa cadastrada com sucesso');
-            res.redirect('/');
+            res.redirect('/login');
         } catch (err) {
             next(err);
         }

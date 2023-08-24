@@ -2,27 +2,25 @@
   "name": "mvc-cadastro",
   "version": "1.0.0",
   "description": "Cadastro de um funcionário",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " nodemon server.js"
+    "start": " nodemon ./bin/server.js"
   },
   "author": "Gustavo",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "bcryptjs": "^2.4.3",
+    "bcrypt": "^5.1.1",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.1",
     "md5": "^2.3.0",
     "mysql2": "^3.6.0",
-    "passport-local": "^1.0.0",
-    "sequelize": "^6.32.1",
-    "sequelize-cli": "^6.6.1"
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
