@@ -1,6 +1,6 @@
 const express = require('express');
 const loginRouter = express.Router();
-const userController = require('../controller/userController');
+const userController = require('../controllers/userController');
 
 // Rota para exibir o formulário de login
 loginRouter.get('/login', userController.mostrarFormularioLogin);

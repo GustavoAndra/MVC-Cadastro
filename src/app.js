@@ -1,18 +1,19 @@
 const express = require('express');
 const app = express();
+const multer = require('multer');
 const path = require('path');
+const session = require('express-session');
 const cors = require('cors');
-const session = require('express-session'); // Adicione esta linha para importar o express-session
 
 // Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Configuração de arquivos estáticos
+app.use(express.static(path.join (__dirname,"public")));
 
 app.set('view engine', 'ejs');
-// Configuração de arquivos estáticos
-app.use(express.static("public"));
 
 // Configuração do express-session
 app.use(session({
@@ -28,17 +29,19 @@ const {
 } = require('./config');
 
 // Rotas
-const homeRouter = require('./router/homeRouter')
+const homeRouter = require('./routers/homeRouter')
 app.use(homeRouter);
 
-const dashboardRouter = require('./router/HomePageRouter');
+const dashboardRouter = require('./routers/HomePageRouter');
 app.use(dashboardRouter);
 
-const loginRouter = require('./router/loginRouter');
+const loginRouter = require('./routers/loginRouter');
 app.use(loginRouter);
 
-const cadastroRouter = require('./router/cadastroRouter');
+const cadastroRouter = require('./routers/cadastroRouter');
 app.use(cadastroRouter);
 
+const cadastroFuncionarioRouter = require('./routers/funcionarioRouter');
+app.use(cadastroFuncionarioRouter);
 
 module.exports = app;

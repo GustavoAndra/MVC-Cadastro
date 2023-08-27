@@ -1,4 +1,4 @@
-const usuarioModel = require('../model/usuarioModel');
+const usuarioModel = require('../models/usuarioModel');
 
 class CadastroController {
     async showCadastroForm(req, res) {

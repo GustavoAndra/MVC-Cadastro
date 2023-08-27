@@ -1,6 +1,7 @@
 const express = require('express');
 const cadastroRouter = express.Router();
-const cadastroController = require('../controller/cadastroController');
+const cadastroController = require('../controllers/cadastroController');
+
 
 cadastroRouter.get('/cadastro', cadastroController.showCadastroForm);
 

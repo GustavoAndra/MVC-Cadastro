@@ -1,4 +1,4 @@
-const usuarioModel = require('../model/usuarioModel');
+const usuarioModel = require('../models/usuarioModel');
 
 class UsuarioController {
     async mostrarFormularioLogin(req, res) {
@@ -15,7 +15,7 @@ class UsuarioController {
             if (resp) {
                 // Se a senha estiver correta, cria uma sessão para o usuário
                 req.session.user = {
-                    id_usuario: resp.id_usuario,
+                    idusuario: resp.idusuario,
                     email: resp.email,
                     nome: resp.nome
                 };
