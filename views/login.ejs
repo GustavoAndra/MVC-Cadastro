@@ -1,61 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Gustavo">
-    <meta name="description" content="MVC-CADASTRO-FUNCIONÁRIO">
-    <link rel="icon" type="image/x-icon" href="/img/Topo-Site.jpg">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>EMPIRE OF STATES</title>
-</head>
+  
+  <%- include('layout/default/head.ejs') %>
+  <link rel="stylesheet" href="./css/login.css">
+
+
 <body>
-  <!--Cadastro-->
   <div class="container" id="container">
     <div class="form-container sign-up-container">
       <form action="/cadastro" method="post">
-        <h1 style="margin-top:10px">Crie sua conta</h1>
+        <h1>Crie sua conta</h1>
         <span>Crie aqui!</span>
-        <input for="nome" type="nome" placeholder="nome" name="nome" required/>
-        <input for="email" type="email" placeholder="E-mail" name="email" required/>
-        <input for="senha" type="senha" placeholder="senha" name="senha" required/>
-        <button>Sign Up</button>
+        <input type="text" placeholder="Nome" name="nome" required>
+        <input type="email" placeholder="E-mail" name="email" required>
+        <input type="password" placeholder="Senha" name="senha" required>
+        <button>Cadastrar</button>
       </form>
     </div>
 
-     <!--Login-->
     <div class="form-container sign-in-container">
       <form action="/login" method="post">
-        <h1>Sign in</h1>
+        <h1>Entrar</h1>
         <div class="social-container">
           <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
           <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
         </div>
-        <span>or use your account</span>
-        <input for="email" type="email" placeholder="E-mail" name="email" required/>
-        <input for="senha" type="password" placeholder="Senha" name="senha" required/>
+        <span>ou use sua conta</span>
+        <input type="email" placeholder="E-mail" name="email" required>
+        <input type="password" placeholder="Senha" name="senha" required>
         <a href="#">Esqueceu a senha?</a>
         <button type="submit">Entrar</button>
       </form>
     </div>
-    
+
     <div class="overlay-container">
       <div class="overlay">
         <div class="overlay-panel overlay-left">
-          <h1>Welcome Back!</h1>
-          <p>To keep connected with us please login with your personal info</p>
-          <button class="ghost" id="signIn">Sign In</button>
+          <h1>Bem-vindo de volta!</h1>
+          <p>Para se manter conectado, faça login com suas informações pessoais.</p>
+          <button class="ghost" id="signIn">Entrar</button>
         </div>
         <div class="overlay-panel overlay-right">
-          <h1>Hello, Friend!</h1>
-          <p>Enter your personal details and start journey with us</p>
-          <button class="ghost" id="signUp">Sign Up</button>
+          <h1>Olá, amigo!</h1>
+          <p>Insira seus detalhes pessoais e comece sua jornada conosco.</p>
+          <button class="ghost" id="signUp">Cadastrar</button>
         </div>
       </div>
     </div>
   </div>
-  
+  <script src="/js/script.js"></script>
 </body>
-<script src="/js/script.js"></script>
 </html>
