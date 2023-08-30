@@ -9,9 +9,16 @@
         animation-duration: 0.3s;
         margin-left: -100vw;
     }
+    .parallax-content h2{
+      font-size: 20px;
+    }
+    .parallax-content p{
+      font-size: 20px;
+    }
     .btn_icon_header{
         display: block;
     }
+
 }@media (min-width: 768px) {
     .button-50 {
       padding: 12px 50px;

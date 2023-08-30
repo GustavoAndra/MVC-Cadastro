@@ -23,7 +23,7 @@ app.use(session({
 
 app.locals = {
     stylesPath: '/styles',   // Caminho para os arquivos de estilo
-    imagesPath: '/images',   // Caminho para as imagens
+    imagesPath: '/img',   // Caminho para as imagens
     jsPath: '/js'            // Caminho para os arquivos JavaScript
 };
 

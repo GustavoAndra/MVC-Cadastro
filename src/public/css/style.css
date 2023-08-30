@@ -77,7 +77,7 @@ body{
 }
 .parallax-content p {
     color: #fff;
-    font-size: 20px; 
+    font-size: 25px; 
     font-weight: bold; 
 }
 section{
@@ -104,12 +104,11 @@ section{
     max-height: 100px;
     overflow: hidden;
 }
-article h2{
+p{
     color: #000;
-    font-family: Arial, Helvetica, sans-serif;
-}
-article p{
-    color: #000000;
+    margin-left: 25px;
+    font-weight: 400;
+    justify-content: center;
 }
 ul{
 	list-style: none;
@@ -183,43 +182,20 @@ footer{
     animation: efeito 4s ease-in-out forwards;
 }
 h2{
+    justify-content: center;
     font-family: "Arial", sans-serif;
+    margin-right: 20px;
     font-size: 30px;
     color: #000;
     text-transform: uppercase;
-    animation: h2 6s ease-in-out forwards;
+    animation: h2 3s ease-in-out forwards;
 }
-canvas {
-  width: 100%;
-}
-.btnVoltar{
-    width: 100%;
-    appearance: button;
-    background-color: #000;
-    background-image: none;
-    border: 1px solid #000;
-    border-radius: 4px;
-    box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
-    box-sizing: border-box;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 20px;
-    margin: 0 5px 10px 0;
-    overflow: visible;
-    padding: 12px 40px;
+#copy {
+    background-color: #f8f9fa;
+    padding: 20px 0;
     text-align: center;
-    text-transform: none;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: middle;
-    white-space: nowrap;
-}.btnVoltar:hover{
-    background-color: #AFE6C3;
-    transform: scale(1.01);
-    color: #000;
-}
+  }
+  
+#copy p {
+    margin: 0;
+  }

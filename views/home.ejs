@@ -4,14 +4,95 @@
 <body>
   <%- include('layout/default/header.ejs') %>
 
+  <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empresa.jpg %>');">
+    <div class="parallax-content">
+        <h2>Seja bem-vindo ao nosso canal de empresas afiliadas</h2>
+        <p>Aqui você pode evoluir o seu método de controle de funcionários e ter <strong>informações incríveis e conteúdos interessantes</strong></p>
+    </div>
+</section>
+
+<main>
+
+  <section id="sobre" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h2 style="margin-bottom: 25px;">Simplifique a Gestão de Funcionários com o EvoTech Solutions</h2>
+          
+          <p>A solução de última geração para otimizar a gestão de funcionários em sua empresa. 
+            Não importa o tamanho da sua organização, o EmpowerCad oferece as ferramentas que você precisa para simplificar
+             e aprimorar os processos de cadastro, acompanhamento e relatórios de funcionários.</p>
+          
+          <p><strong>Eficiência Simplificada:</strong> Cadastre e gerencie informações de funcionários com facilidade, economizando tempo valioso.</p>
+          <p><strong>Acesso em Qualquer Lugar:</strong> Acesse o sistema de qualquer dispositivo com acesso à internet - desktop, tablet ou smartphone.</p>
+          <p><strong>Segurança de Dados:</strong> Armazene informações sensíveis de funcionários com segurança avançada, cumprindo regulamentos de privacidade.</p>
+          <p><strong>Relatórios Customizáveis:</strong> Gere relatórios detalhados com apenas alguns cliques, auxiliando na tomada de decisões informadas.</p>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="p-4 mb-3 rounded" style="box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; transform: scale(0.9) translateZ(-20px);">
+            <h4>Relatos</h4>
+            <p class="mb-0"><strong>"O EvoTech Solutions transformou a forma como gerenciamos nossa equipe. Agora podemos dedicar mais tempo ao crescimento dos nossos negócios." - Ana Silva, CEO da Empresa XYZ.
+
+             "Simplificou totalmente nossos processos internos. Recomendo O EvoTech Solutions a qualquer empresa que busque uma solução de gestão de funcionários eficaz." - João Oliveira, Diretor de Recursos Humanos da Empresa ABC.</strong></p> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-------------------------------------------Cards Exemplo---------------------->
+
+<section id="novidades">
+  <h2 style="margin-bottom: 25px;margin-left: 25px;">FECHE CONOSCO E VENHA SER FELIZ :)</h2>
+  <div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= locals.imagesPath %>/Empresa.jpg %>" class="card-img-top imgPost img-post2" alt="...">
+          <div class="card-body">
+            <h3 class="card-title titulo-post2">Parceiros</h3>
+            <h5 class="card-text text descricao-post2"></h5>
+            <p class="card-text"><small class="text-body-secondary nome-criador2"></small></p>
+            <p class="card-text"><small class="text-body-secondary date2"></small></p>              
+          </div>
+        </div>
+      </div>  
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= locals.imagesPath %>/Empresa.jpg %>" class="card-img-top imgPost img-post2" alt="...">
+          <div class="card-body">
+            <h3 class="card-title titulo-post2">Parceiros</h3>
+            <h5 class="card-text text descricao-post2"></h5>
+            <p class="card-text"><small class="text-body-secondary nome-criador2"></small></p>
+            <p class="card-text"><small class="text-body-secondary date2"></small></p>              
+          </div>
+        </div>
+      </div>  
+
+      <div class="col">
+        <div class="card h-100">
+          <img src="<%= locals.imagesPath %>/Empresa.jpg %>" class="card-img-top imgPost img-post2" alt="...">
+          <div class="card-body">
+            <h3 class="card-title titulo-post2">Parceiros</h3>
+            <h5 class="card-text text descricao-post2"></h5>
+            <p class="card-text"><small class="text-body-secondary nome-criador2"></small></p>
+            <p class="card-text"><small class="text-body-secondary date2"></small></p>              
+          </div>
+        </div>
+      </div>  
+    </div>
+
+    
+  </div>
+  
+</section>
 
 
 
-
-
-
-
- jzngd
+<%- include('layout/default/footer.ejs') %>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="js/home.js"></script>
