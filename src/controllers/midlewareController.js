@@ -1,8 +1,8 @@
 const bcrypt = require('bcrypt');
 // Middleware de autenticação
- async function isAuthenticated(req, res, next) {
+ async function isAuthenticated(req, res, next){
   // Verifique se o usuário está autenticado
-  if (req.session.user) {
+  if (req.session.user){
     // O usuário está autenticado, continue com a próxima etapa
     next();
   } else {

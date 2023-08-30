@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const multer = require('multer');
 const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
@@ -21,6 +20,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+app.locals = {
+    stylesPath: '/styles',   // Caminho para os arquivos de estilo
+    imagesPath: '/images',   // Caminho para as imagens
+    jsPath: '/js'            // Caminho para os arquivos JavaScript
+};
 
 const {
     BASE_URL,

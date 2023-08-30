@@ -18,11 +18,10 @@ module.exports = {
     verificarExistenciaEmailSenha: async (email, senha) => {
         const connection = await db.connect();
         const [rows] = await connection.query('SELECT * FROM usuario WHERE email = ?', [email]);
-    
+
         if (rows.length === 0) {
             return null;
         }
-    
         const usuario = rows[0];
     
         // Compare a senha fornecida com a senha armazenada usando bcrypt
