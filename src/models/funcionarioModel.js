@@ -2,10 +2,12 @@ const mysql = require('mysql2');
 
 const inserirFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, usuarioId) => {
     const connection = mysql.createConnection({
-        host: 'localhost',
+        url: "mysql://root:Iax6uC5rPPFtZoeDYPOv@containers-us-west-37.railway.app:7103/railway",
+        host: 'containers-us-west-37.railway.app',
         user: 'root',
-        password: 'janela1434',
-        database: 'mvc'
+        password: 'Iax6uC5rPPFtZoeDYPOv',
+        database: 'railway',
+        port: 7103
     });
 
     try {

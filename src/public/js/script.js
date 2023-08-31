@@ -1,12 +1,27 @@
-const signUpButton = document.getElementById('signUp');
-const signInButton = document.getElementById('signIn');
-const container = document.getElementById('container');
+const forms = document.querySelector(".forms"),
+pwShowHide = document.querySelectorAll(".eye-icon"),
+links = document.querySelectorAll(".link");
 
-signUpButton.addEventListener('click', () => {
-  container.classList.add('right-panel-active');
-});
+pwShowHide.forEach(eyeIcon => {
+eyeIcon.addEventListener("click", () => {
+  let pwFields = eyeIcon.parentElement.parentElement.querySelectorAll(".password");
+  
+  pwFields.forEach(password => {
+      if(password.type === "password"){
+          password.type = "text";
+          eyeIcon.classList.replace("bx-hide", "bx-show");
+          return;
+      }
+      password.type = "password";
+      eyeIcon.classList.replace("bx-show", "bx-hide");
+  })
+  
+})
+})      
 
-signInButton.addEventListener('click', () => {
-  container.classList.remove('right-panel-active');
-});
-
+links.forEach(link => {
+link.addEventListener("click", e => {
+ e.preventDefault(); //preventing form submit
+ forms.classList.toggle("show-signup");
+})
+})

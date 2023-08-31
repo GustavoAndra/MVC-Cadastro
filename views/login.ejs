@@ -1,54 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  
-  <%- include('layout/default/head.ejs') %>
-  <link rel="stylesheet" href="./css/login.css">
-
+<%- include('layout/default/head.ejs') %>
+<link rel="stylesheet" href="./css/login.css">
 
 <body>
-  <div class="container" id="container">
-    <div class="form-container sign-up-container">
-      <form action="/cadastro" method="post">
-        <h1>Crie sua conta</h1>
-        <span>Crie aqui!</span>
-        <input type="text" placeholder="Nome" name="nome" required>
-        <input type="email" placeholder="E-mail" name="email" required>
-        <input type="password" placeholder="Senha" name="senha" required>
-        <button>Cadastrar</button>
-      </form>
-    </div>
+    <section class="container forms">
+        <!-- Formulário de Login -->
+        <div class="form login">
+            <div class="form-content">
+                <header>Login</header>
+                <form action="/login" method="post"> <!-- Substitua "/login" pelo URL real da rota de login -->
+                    <div class="field input-field">
+                        <input for="email" type="email" placeholder="E-mail" name="email" required/>
+                    </div>
 
-    <div class="form-container sign-in-container">
-      <form action="/login" method="post">
-        <h1>Entrar</h1>
-        <div class="social-container">
-          <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-          <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-        <span>ou use sua conta</span>
-        <input type="email" placeholder="E-mail" name="email" required>
-        <input type="password" placeholder="Senha" name="senha" required>
-        <a href="#">Esqueceu a senha?</a>
-        <button type="submit">Entrar</button>
-      </form>
-    </div>
+                    <div class="field input-field">
+                        <input for="senha" type="password" placeholder="Senha" name="senha" required/>
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
 
-    <div class="overlay-container">
-      <div class="overlay">
-        <div class="overlay-panel overlay-left">
-          <h1>Bem-vindo de volta!</h1>
-          <p>Para se manter conectado, faça login com suas informações pessoais.</p>
-          <button class="ghost" id="signIn">Entrar</button>
+                    <div class="form-link">
+                        <a href="#" class="forgot-pass">Esqueceu a senha?</a>
+                    </div>
+
+                    <div class="field button-field">
+                        <button type="submit">Login</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span>Ainda não tem uma conta? <a href="#" class="link signup-link">Cadastre-se</a></span>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <!-- Opções de Mídia Social -->
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class='bx bxl-facebook facebook-icon'></i>
+                    <span>Fazer login com o Facebook</span>
+                </a>
+            </div>
+
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <img src="#" alt="" class="google-img">
+                    <span>Fazer login com o Google</span>
+                </a>
+            </div>
         </div>
-        <div class="overlay-panel overlay-right">
-          <h1>Olá, amigo!</h1>
-          <p>Insira seus detalhes pessoais e comece sua jornada conosco.</p>
-          <button class="ghost" id="signUp">Cadastrar</button>
+
+        <!-- Formulário de Cadastro -->
+        <div class="form signup">
+            <div class="form-content">
+                <header>Cadastro</header>
+                <form action="/cadastro" method="post"> <!-- Substitua "/cadastro" pelo URL real da rota de cadastro -->
+                    <div class="field input-field">
+                        <input for="nome" type="text" placeholder="Nome" name="nome" required/>
+                    </div>
+
+                    <div class="field input-field">
+                        <input for="email" type="email" placeholder="E-mail" name="email" required/>
+                    </div>
+
+                    <div class="field input-field">
+                        <input for="senha" type="password" placeholder="Senha" name="senha" required/>
+                        <i class='bx bx-hide eye-icon'></i>
+                    </div>
+
+                    <div class="field button-field">
+                        <button>Cadastrar</button>
+                    </div>
+                </form>
+
+                <div class="form-link">
+                    <span>Já tem uma conta? <a href="#" class="link login-link">Faça login</a></span>
+                </div>
+            </div>
+
+            <div class="line"></div>
+
+            <!-- Opções de Mídia Social -->
+            <div class="media-options">
+                <a href="#" class="field facebook">
+                    <i class='bx bxl-facebook facebook-icon'></i>
+                    <span>Fazer login com o Facebook</span>
+                </a>
+            </div>
+
+            <div class="media-options">
+                <a href="#" class="field google">
+                    <img src="#" alt="" class="google-img">
+                    <span>Fazer login com o Google</span>
+                </a>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
-  <script src="/js/script.js"></script>
+    </section>
 </body>
+<script src="<%= locals.jsPath %>/script.js"></script>
 </html>

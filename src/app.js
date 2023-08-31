@@ -30,6 +30,8 @@ app.locals = {
 const {
     BASE_URL,
     DB_HOST,
+    DB_USER_PASS,
+    DB_PORT,
     DB_DATABASE
 } = require('./config');
 
