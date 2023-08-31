@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise'); // Importe a versão compatível com promessas
+const mysql = require('mysql2/promise');
 
 const connectionConfig = {
     host: 'containers-us-west-37.railway.app',
@@ -33,11 +33,11 @@ const inserirFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, 
             return { success: false, message: 'Erro ao inserir funcionário.'};
         }
     } catch (error) {
-        // Log de erro detalhado
-        console.error('Erro no modelo ao inserir funcionário:', error);
+        
+        console.error('Erro no modelo ao inserir funcionário:', error);    
         return { success: false, message: 'Erro ao inserir funcionário.' };
-    } finally {
-        // Certificar-se de que a conexão seja sempre liberada
+    } 
+    finally {
         connection.end();
     }
 };

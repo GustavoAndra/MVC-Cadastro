@@ -7,7 +7,7 @@ class UsuarioController {
 
     async fazerLogin(req, res) {
         const { email, senha } = req.body;
-
+        
         try {
             // Verifica se o email existe e busca o usuário correspondente
             const resp = await usuarioModel.verificarExistenciaEmailSenha(email, senha);
