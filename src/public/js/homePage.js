@@ -1,39 +1,33 @@
-async function carregarDetalhesFuncionario() {
-    try {
-        const response = await fetch('/listar'); // Rota personalizada para carregar os detalhes dos funcionários associados ao usuário logado
-        const data = await response.json();
+document.getElementById('formulario-cadastro').addEventListener('submit', function (event) {
+    // Valide se os campos estão preenchidos e com o comprimento correto.
+    const nome = document.getElementById('nome').value;
+    const pis = document.getElementById('pis').value;
+    const rg = document.getElementById('rg').value;
+    const cpf = document.getElementById('cpf').value;
 
-        const funcionarioInfo = document.getElementById('funcionario-info');
-
-        if (data.success) {
-            const funcionarios = data.funcionarios;
-
-            if (funcionarios.length > 0) {
-                funcionarioInfo.innerHTML = funcionarios.map(funcionario => `
-                    <div class="card">
-                        <img src="${funcionario.arquivo}" alt="Foto do funcionário">
-                        <p>Nome: ${funcionario.nome}</p>
-                        <p>Email: ${funcionario.email}</p>
-                        <p>PIS: ${funcionario.pis}</p>
-                        <p>RG: ${funcionario.rg}</p>
-                        <p>CPF: ${funcionario.cpf}</p>
-                        <p>Telefone: ${funcionario.telefone}</p>
-                       
-                        <div class="card-buttons">
-                            <button class="btn-editar" type="button" data-id="${funcionario.id}">Editar</button>
-                            <button class="btn-excluir" type="button" data-id="${funcionario.id}">Excluir</button>
-                        </div>
-                    </div>
-                `).join('');
-            } else {
-                funcionarioInfo.innerHTML = '<p>Nenhum funcionário cadastrado.</p>';
-            }
-        } else {
-            funcionarioInfo.textContent = 'Erro ao carregar funcionários.';
-        }
-    } catch (error) {
-        console.error('Erro ao carregar detalhes dos funcionários:', error);
+    if (nome === '' || pis === '' || rg === '' || cpf === '') {
+      event.preventDefault(); // Impede o envio do formulário se algum campo estiver em branco.
+      alert('Por favor, preencha todos os campos.');
     }
-}
 
-carregarDetalhesFuncionario();
+    if (pis.length !== 12) {
+      event.preventDefault(); // Impede o envio do formulário se o comprimento do PIS não for o correto.
+      document.getElementById('pis-error').textContent = 'O PIS deve ter 12 dígitos.';
+    } else {
+      document.getElementById('pis-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
+    }
+
+    if (rg.length !== 10) {
+      event.preventDefault(); // Impede o envio do formulário se o comprimento do RG não for o correto.
+      document.getElementById('rg-error').textContent = 'O RG deve ter 10 dígitos.';
+    } else {
+      document.getElementById('rg-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
+    }
+
+    if (cpf.length !== 12) {
+      event.preventDefault(); // Impede o envio do formulário se o comprimento do CPF não for o correto.
+      document.getElementById('cpf-error').textContent = 'O CPF deve ter 12 dígitos.';
+    } else {
+      document.getElementById('cpf-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
+    }
+  });

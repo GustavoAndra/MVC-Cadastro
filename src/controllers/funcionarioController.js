@@ -11,18 +11,25 @@ module.exports = {
   funcionarioController: {
     inserirFuncionario: async (req, res) => {
       const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
-
+    
       isAuthenticated(req, res, async () => {
         const usuarioId = req.session?.user?.idusuario;
-
+    
         if (usuarioId !== undefined) {
           const resultado = await funcionarioModel.inserirFuncionario(nome, pis, rg, cpf, telefone, email, arquivo, usuarioId);
-          res.json(resultado);
+    
+          if (resultado.success) {
+            // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
+            res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
+          } else {
+            res.status(500).json({ message: 'Erro ao cadastrar o funcionário.' });
+          }
         } else {
           res.status(401).json({ message: 'ID de usuário ausente na sessão.' });
         }
       });
     },
+    
 
     editarFuncionario: async (req, res) => {
       const { id } = req.params;

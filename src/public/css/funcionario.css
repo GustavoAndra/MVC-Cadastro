@@ -148,4 +148,6 @@ label{
   .form :where(.gender-option, .gender) {
     row-gap: 15px;
   }
+}.error-message {
+  color: red;
 }
