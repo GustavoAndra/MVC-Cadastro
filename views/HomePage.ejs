@@ -43,8 +43,32 @@
     </section>
     
     <section id="funcionario-details">
-        <h2>Controle aqui seus Funcionário</h2>
-        <div id="funcionario-info"></div>
+        
+ <h2>Controle aqui seus Funcionário</h2>
+ <% if (success) { %>
+     <% if (funcionarios.length > 0) { %>
+         <% funcionarios.forEach(funcionario => { %>
+             <div class="card">
+                 <img src="data:image/jpeg;base64, <%= funcionario.arquivo %>" alt="Foto do funcionário">
+                 <p>Nome: <%= funcionario.nome %></p>
+                 <p>Email: <%= funcionario.email %></p>
+                 <p>PIS: <%= funcionario.pis %></p>
+                 <p>RG: <%= funcionario.rg %></p>
+                 <p>CPF: <%= funcionario.cpf %></p>
+                 <p>Telefone: <%= funcionario.telefone %></p>
+                
+                 <div class="card-buttons">
+                     <button class="btn-editar" type="button" data-id="<%= funcionario.id %>">Editar</button>
+                     <button class="btn-excluir" type="button" data-id="<%= funcionario.id %>">Excluir</button>
+                 </div>
+             </div>
+         <% }); %>
+     <% } else { %>
+         <p>Nenhum funcionário cadastrado.</p>
+     <% } %>
+ <% } else { %>
+     <p>Erro ao carregar funcionários.</p>
+ <% } %>
     </section>
 
 </main>
