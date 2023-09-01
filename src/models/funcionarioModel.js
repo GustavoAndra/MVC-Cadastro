@@ -86,32 +86,28 @@ const editarFuncionarioPorId = async (funcionarioId, novoNome, novoPis, novoRg, 
     }
 };
 
-const listarFuncionarioPorId = async (funcionarioId) => {
+const listarFuncionarioPorUsuario = async (usuarioId) => {
     const connection = await mysql.createConnection(connectionConfig);
 
     try {
         const [rows] = await connection.execute(
-            'SELECT * FROM funcionario WHERE idfuncionario = ?',
-            [funcionarioId]
+            'SELECT * FROM funcionario WHERE usuario_idusuario = ?',
+            [usuarioId]
         );
-        
 
-        if (rows.length > 0) {
-            return { success: true, funcionario: rows[0] };
-        } else {
-            return { success: false, message: 'Funcionário não encontrado.' };
-        }
+        return { success: true, funcionarios: rows }; // Retornar a matriz completa
     } catch (error) {
-        console.error('Erro ao listar funcionário:', error);
-        return { success: false, message: 'Erro ao listar funcionário.' };
+        console.error('Erro ao listar funcionários:', error);
+        return { success: false, message: 'Erro ao listar funcionários.' };
     } finally {
         connection.end();
     }
 };
 
+
 module.exports = {
     inserirFuncionario,
     excluirFuncionarioPorId,
     editarFuncionarioPorId,
-    listarFuncionarioPorId
+    listarFuncionarioPorUsuario
 };

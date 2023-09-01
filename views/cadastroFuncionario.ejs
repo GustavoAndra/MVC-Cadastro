@@ -1,35 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar Funcionário</title>
-</head>
+<html lang="pt-br">
+    <%- include('layout/default/headLogado.ejs') %>
+    <link rel="stylesheet" href="./css/funcionario.css">
 <body>
-    <h1>Cadastrar Novo Funcionário</h1>
-    <form action="/funcionario" method="post">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" name="nome" required><br>
-
-        <label for="pis">PIS:</label>
-        <input type="text" id="pis" name="pis" required><br>
-
-        <label for="rg">RG:</label>
-        <input type="text" id="rg" name="rg" required><br>
-
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" name="cpf" required><br>
-
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" name="telefone" required><br>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-
-        <label for="arquivo">Arquivo:</label>
-        <input type="file" id="arquivo" name="arquivo" required><br>
-        
-        <button type="submit">Cadastrar</button>
-    </form>
+    <%- include('layout/default/headerLogado.ejs') %>
+    <section class="container">
+        <header>Cadastre seu funcionário aqui</header>
+        <form action="/funcionario" method="post" id="formulario-cadastro" class="form">
+            <div class="input-box">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="Insira seu nome" required><br>
+            </div>
+            <div class="input-box">
+                <label for="pis">PIS</label>
+                <input type="text" id="pis" name="pis" placeholder="Insira seu PIS" required><br>
+            </div>
+            <div class="input-box">
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" placeholder="Insira seu RG" required><br>
+            </div>
+            <div class="input-box">
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" placeholder="Insira seu CPF" required><br>
+            </div>
+            <div class="input-box">
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" placeholder="Insira seu Telefone" required><br>
+            </div>
+            <div class="input-box">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Insira seu Email" required><br>
+            </div>
+            <div class="input-box">
+                <label for="arquivo">Arquivo:</label>
+                <input type="file" id="arquivo" name="arquivo" required><br>
+            </div>
+            <button type="submit" id="btn-cadastrar">Cadastrar</button>
+        </form>
+    </section>
+    <%- include('layout/default/footer.ejs') %>
 </body>
 </html>

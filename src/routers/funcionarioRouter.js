@@ -15,6 +15,6 @@ router.put('/editar/:id', funcionarioController.funcionarioController.editarFunc
 router.delete('/delete/:id', funcionarioController.funcionarioController.excluirFuncionario);
 
 // Rota para listar um funcionário pelo ID
-router.get('/listar/:id', funcionarioController.funcionarioController.listarFuncionario);
+router.get('/listar', funcionarioController.funcionarioController.listarDetalhesFuncionario);
 
 module.exports = router;

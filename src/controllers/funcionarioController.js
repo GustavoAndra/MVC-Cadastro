@@ -38,10 +38,16 @@ module.exports = {
       res.json(result);
     },
 
-    listarFuncionario: async (req, res) => {
-      const { id } = req.params;
-      const result = await funcionarioModel.listarFuncionarioPorId(id);
-      res.json(result);
-    }
+    listarDetalhesFuncionario: async (req, res) => {
+      try {
+          const usuarioId = req.session?.user?.idusuario;
+          const result = await funcionarioModel.listarFuncionarioPorUsuario(usuarioId);
+          res.json(result);
+      } catch (error) {
+          console.error('Erro ao listar detalhes do funcionário:', error);
+          res.status(500).json({ success: false, message: 'Erro ao listar detalhes do funcionário.' });
+      }
+  }
+  
   }
 };

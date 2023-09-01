@@ -25,3 +25,21 @@ link.addEventListener("click", e => {
  forms.classList.toggle("show-signup");
 })
 })
+
+function toggleProfileDropdown() {
+  var dropdown = document.getElementById("profile-dropdown-content");
+  dropdown.classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.btn_icon_header')) {
+      var dropdowns = document.getElementsByClassName("profile-dropdown-content");
+      for (var i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+          }
+      }
+  }
+}

@@ -1,14 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    
-</head>
+<html lang="pt-br">
+    <%- include('layout/default/headLogado.ejs') %>
 <body>
+    <%- include('layout/default/headerLogado.ejs') %>
+
+    <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/EmPRESA-fundo.jpg %>');">
+        <div class="parallax-content">
+            <h2>Seja muito bem-vindo à EvoTech Solutions</h2>
+            <p>É com grande alegria que recebemos você em nossa comunidade tecnológica. </p>
+        </div>
+    </section>
+
+<main>
+
+    <section id="agradecimento" class="d-flex align-items-center">
+        <div class="container-fluid">
+            <div class="row">
+                <h2 class="col-md-12">Agora você faz parte da nossa equipe</h2>
+                <div class="col-md-6">
+                    <p>
+                            Você agora faz parte de uma jornada emocionante, onde a inovação e a colaboração estão no centro de tudo o que fazemos. Queremos que se sinta em casa enquanto navega pelas nossas páginas, descobrindo artigos inspiradores, mantendo-se atualizado(a) sobre as tendências do mercado e participando de discussões estimulantes.
+        
+                        Estamos aqui para apoiar você em sua busca por conhecimento e crescimento. Fique à vontade para explorar, interagir e compartilhar suas ideias. Juntos, podemos moldar o futuro da tecnologia.
+        
+                        Mais uma vez, seja bem-vindo(a) à família EvoTech Solutions!"
+                    </p>
+                    <p>
+                            Você agora faz parte de uma jornada emocionante, onde a inovação e a colaboração estão no centro de tudo o que fazemos. Queremos que se sinta em casa enquanto navega pelas nossas páginas, descobrindo artigos inspiradores, mantendo-se atualizado(a) sobre as tendências do mercado e participando de discussões estimulantes.
+        
+                        Estamos aqui para apoiar você em sua busca por conhecimento e crescimento. Fique à vontade para explorar, interagir e compartilhar suas ideias. Juntos, podemos moldar o futuro da tecnologia.
+        
+                        Mais uma vez, seja bem-vindo(a) à família EvoTech Solutions!"
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa">
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="funcionario-details">
+        <h2>Controle aqui seus Funcionário</h2>
+        <div id="funcionario-info"></div>
 
 
+    </section>
+
+
+</main>
 
 
     
-    
+    <%- include('layout/default/footer.ejs') %>
 </body>
+<script src="<%= locals.jsPath %>/homePage.js"></script>
 </html>
