@@ -6,7 +6,7 @@ const funcionarioController = require('../controllers/funcionarioController');
 router.get('/funcionario', funcionarioController.showHomePage);
 
 // Rota para inserir um novo funcionário
-router.post('/funcionario', funcionarioController.funcionarioController.inserirFuncionario);
+router.post('/register/funcionario', funcionarioController.funcionarioController.inserirFuncionario);
 
 // Rota para editar um funcionário pelo ID
 router.put('/editar/:id', funcionarioController.funcionarioController.editarFuncionario);
@@ -15,6 +15,6 @@ router.put('/editar/:id', funcionarioController.funcionarioController.editarFunc
 router.delete('/delete/:id', funcionarioController.funcionarioController.excluirFuncionario);
 
 // Rota para listar um funcionário pelo ID
-router.get('/listar', funcionarioController.funcionarioController.listarDetalhesFuncionario);
+router.get('/listar/funcionario', funcionarioController.funcionarioController.listarDetalhesFuncionario);
 
 module.exports = router;

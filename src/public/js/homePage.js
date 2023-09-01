@@ -10,9 +10,9 @@ document.getElementById('formulario-cadastro').addEventListener('submit', functi
       alert('Por favor, preencha todos os campos.');
     }
 
-    if (pis.length !== 12) {
+    if (pis.length !== 11) {
       event.preventDefault(); // Impede o envio do formulário se o comprimento do PIS não for o correto.
-      document.getElementById('pis-error').textContent = 'O PIS deve ter 12 dígitos.';
+      document.getElementById('pis-error').textContent = 'O PIS deve ter 11 dígitos.';
     } else {
       document.getElementById('pis-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
     }
