@@ -1,16 +1,32 @@
-<html>
-<head>
-    <title>Editar Funcionário</title>
-</head>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('layout/default/headLogado.ejs') %>
 <body>
+  
     <h2>Editar Funcionário</h2>
-    <form method="post" action="/atualizar/funcionario">
+    <form method="post" action="/funcionario/editar/">
         <input type="hidden" name="id" value="<%= funcionario.id %>">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>
+        
         <label for="email">Email:</label>
         <input type="text" id="email" name="email" value="<%= funcionario.email %>"><br>
-
+        
+        <label for="pis">PIS:</label>
+        <input type="text" id="pis" name="pis" value="<%= funcionario.pis %>"><br>
+        
+        <label for="rg">RG:</label>
+        <input type="text" id="rg" name="rg" value="<%= funcionario.rg %>"><br>
+        
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" name="cpf" value="<%= funcionario.cpf %>"><br>
+        
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" name="telefone" value="<%= funcionario.telefone %>"><br>
+        
+        <label for="arquivo">Arquivo:</label>
+        <input type="text" id="arquivo" name="arquivo" value="<%= funcionario.arquivo %>"><br>
+    
         <button type="submit">Atualizar</button>
     </form>
 </body>

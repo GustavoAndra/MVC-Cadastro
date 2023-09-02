@@ -67,7 +67,7 @@ module.exports = {
         if (!pessoa) {
             res.redirect('/homepage'); // Redirecionar se a pessoa não for encontrada
         } else {
-            res.render('atualizar', { funcionario: pessoa }); // Passar a variável pessoa para o template EJS
+            res.render('edite-funcionario', { funcionario: pessoa }); // Passar a variável pessoa para o template EJS
         }
     } catch (error) {
         console.error('Erro ao buscar funcionario:', error);
