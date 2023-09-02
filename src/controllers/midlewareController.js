@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
     next();
   } else {
     // O usuário não está autenticado
-    res.redirect('/login'); 
+    res.redirect('/user'); 
   }
 }
 

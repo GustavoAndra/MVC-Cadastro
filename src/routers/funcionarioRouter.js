@@ -3,7 +3,7 @@ const router = express.Router();
 const funcionarioController = require('../controllers/funcionarioController');
 
 // Rota para exibir a página de cadastro de funcionários
-router.get('/register/funcionario', funcionarioController.showHomePage);
+router.get('/funcionario', funcionarioController.showHomePage);
 
 // Rota para inserir um novo funcionário
 router.post('/register/funcionario', funcionarioController.inserirFuncionario);

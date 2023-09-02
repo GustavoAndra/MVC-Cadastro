@@ -16,7 +16,7 @@ class CadastroController {
 
             await usuarioModel.inserirUsuario(nome, email, senha);
             console.log('Empresa cadastrada com sucesso');
-            res.redirect('/login');
+            res.redirect('/user');
         } catch (err) {
             next(err);
         }
