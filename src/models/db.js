@@ -22,4 +22,5 @@ async function connect() {
         throw error;
     }
 }
+
 module.exports = {connect}

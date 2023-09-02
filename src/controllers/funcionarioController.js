@@ -56,4 +56,42 @@ module.exports = {
           res.status(500).json({ success: false, message: 'Erro ao listar detalhes do funcionário.' });
       }
   },
+  
+   // Controller para mostrar o formulário de edição
+   mostrarFormularioEdicao: async (req, res) => {
+    const idPessoa = req.params.id;
+  
+    try {
+        const pessoa = await funcionarioModel.editarFuncionarioPorId(idPessoa);
+  
+        if (!pessoa) {
+            res.redirect('/homepage'); // Redirecionar se a pessoa não for encontrada
+        } else {
+            res.render('atualizar', { funcionario: pessoa }); // Passar a variável pessoa para o template EJS
+        }
+    } catch (error) {
+        console.error('Erro ao buscar funcionario:', error);
+        res.status(500).send('Erro interno');
+    }
+  },
+  
+
+editarPessoa: async (req, res) => {
+  const idPessoa = req.params.id;
+  const {nome, pis, rg, cpf, telefone, email, arquivo} = req.body; // Use chaves para extrair os dados diretamente
+
+  try {
+      await funcionarioModel.atualizarPessoa(idPessoa, nome, pis, rg, cpf, telefone, email, arquivo);
+      res.redirect('/homepage'); 
+  } catch (error) {
+      console.error('Erro ao atualizar pessoa:', error);
+      res.status(500).send('Erro interno');
+  }
+},
+
+  showEditePage: (req, res, next) => {
+    isAuthenticated(req, res, () => {
+      res.render('funcionario', {funcionario});
+    });
+  },
 }; 

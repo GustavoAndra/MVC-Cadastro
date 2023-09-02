@@ -8,12 +8,14 @@ router.get('/funcionario', funcionarioController.showHomePage);
 // Rota para inserir um novo funcionário
 router.post('/register/funcionario', funcionarioController.inserirFuncionario);
 
-// Rota para a página de edição de um funcionário
+// Rota para listar um funcionário pelo ID
+router.get('/listar/funcionario', funcionarioController.listarDetalhesFuncionario);
 
 // Rota para excluir um funcionário pelo ID
 router.post('/funcionario/delete/:id', funcionarioController.excluirFuncionario);
 
-// Rota para listar um funcionário pelo ID
-router.get('/listar/funcionario', funcionarioController.listarDetalhesFuncionario);
+router.get('/funcionario/editar/:id', funcionarioController.mostrarFormularioEdicao);
+
+router.post('/funcionario/editar/:id', funcionarioController.listarDetalhesFuncionario);
 
 module.exports = router;
