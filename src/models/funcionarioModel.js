@@ -47,7 +47,7 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
 
     try {
         const [deleteResult] = await connection.execute(
-            'DELETE FROM funcionario WHERE id = ?',
+            'DELETE FROM funcionario WHERE idfuncionario = ?',
             [funcionarioId]
         );
 
@@ -58,11 +58,14 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
         }
     } catch (error) {
         console.error('Erro ao excluir funcionário:', error);
-        return { success: false, message: 'Erro ao excluir funcionário.' };
+        throw error; // Lançar a exceção para ser tratada por quem chamou a função
     } finally {
         connection.end();
     }
 };
+
+
+
 
 const editarFuncionarioPorId = async (funcionarioId, novoNome, novoPis, novoRg, novoCpf, novoTelefone, novoEmail, novoArquivo) => {
     const connection = await mysql.createConnection(connectionConfig);

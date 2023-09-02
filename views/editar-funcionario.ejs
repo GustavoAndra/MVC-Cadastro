@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Editar Funcionário</title>
+</head>
+<body>
+    <h2>Editar Funcionário</h2>
+    <form method="post" action="/atualizar/funcionario">
+        <!-- Inclua os campos do formulário para os dados que o usuário pode atualizar -->
+        <input type="hidden" name="id" value="<%= funcionario.id %>">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" value="<%= funcionario.email %>"><br>
+        <!-- Adicione outros campos que o usuário pode editar aqui -->
+        <button type="submit">Atualizar</button>
+    </form>
+</body>
+</html>

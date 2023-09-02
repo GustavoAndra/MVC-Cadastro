@@ -8,7 +8,6 @@ module.exports = {
     });
   },
 
-  funcionarioController: {
     inserirFuncionario: async (req, res) => {
       const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
     
@@ -30,21 +29,23 @@ module.exports = {
       });
     },
     
-
-    editarFuncionario: async (req, res) => {
-      const { id } = req.params;
-      const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
-
-      const result = await funcionarioModel.editarFuncionarioPorId(id, nome, pis, rg, cpf, telefone, email, arquivo);
-      res.json(result);
-    },
-
     excluirFuncionario: async (req, res) => {
-      const { id } = req.params;
-      const result = await funcionarioModel.excluirFuncionarioPorId(id);
-      res.json(result);
-    },
-
+      try {
+          const { id } = req.params;
+          const result = await funcionarioModel.excluirFuncionarioPorId(id);
+  
+          if (result.success) {
+              // Redirecionar para a página inicial após a exclusão
+              res.redirect('/homePage');
+          } else {
+              res.status(404).json(result); // Ou use outro código de status apropriado para funcionário não encontrado
+          }
+      } catch (error) {
+          console.error('Erro ao excluir funcionário:', error);
+          res.status(500).json({ success: false, message: 'Erro interno do servidor' });
+      }
+  },
+  
     listarDetalhesFuncionario: async (req, res) => {
       try {
           const usuarioId = req.session?.user?.idusuario;
@@ -54,7 +55,5 @@ module.exports = {
           console.error('Erro ao listar detalhes do funcionário:', error);
           res.status(500).json({ success: false, message: 'Erro ao listar detalhes do funcionário.' });
       }
-  }
-  
-  }
-};
+  },
+}; 

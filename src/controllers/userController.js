@@ -22,11 +22,11 @@ class UsuarioController {
         
                 res.redirect('/HomePage'); // Redireciona para a página de logados
             } else {
-                res.redirect('/login'); // Senha incorreta ou usuário não encontrado
+                res.redirect('/user'); // Senha incorreta ou usuário não encontrado
             }
         } catch (error) {
             console.log(error);
-            res.redirect('/login');
+            res.redirect('/user');
         }
     }
 }

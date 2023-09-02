@@ -3,9 +3,9 @@ const loginRouter = express.Router();
 const userController = require('../controllers/userController');
 
 // Rota para exibir o formulário de login
-loginRouter.get('/login', userController.mostrarFormularioLogin);
+loginRouter.get('/user', userController.mostrarFormularioLogin);
 
 // Rota para processar o login
-loginRouter.post('/login', userController.fazerLogin);
+loginRouter.post('/user/login', userController.fazerLogin);
 
 module.exports = loginRouter;
