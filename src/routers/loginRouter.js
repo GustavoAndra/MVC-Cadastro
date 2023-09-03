@@ -9,7 +9,7 @@ loginRouter.get('/user', userController.mostrarFormularioLogin);
 loginRouter.post('/user/login', userController.fazerLogin);
 
 // Rota para deslogar
-loginRouter.get('/deslogar', (req, res) => {
+loginRouter.get('/user/deslogar', (req, res) => {
     delete req.session.user;
     res.redirect('/HomePage');
   });
