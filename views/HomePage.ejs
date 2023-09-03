@@ -57,18 +57,18 @@
                  <p>CPF: <%= funcionario.cpf %></p>
                  <p>Telefone: <%= funcionario.telefone %></p>
                 
-                 <div class="card-buttons">
-                    <a href="/funcionario/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
-                      <i class="fas fa-edit"></i> Editar
-                    </a>
-                  
-                    <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
-                      <button type="submit" class="btn btn-danger btn-excluir">
-                        <i class="fas fa-trash"></i> Excluir
-                      </button>
-                    </form>
-                  </div>
-                  
+                <div class="card-buttons">
+  <a href="/funcionario/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+    <i class="fas fa-edit"></i> Editar
+  </a>
+
+  <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
+    <button type="submit" class="btn btn-danger btn-excluir">
+      <i class="fas fa-trash"></i> Excluir
+    </button>
+  </form>
+</div>
+
                 
              </div>
          <% }); %>

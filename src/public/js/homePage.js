@@ -24,9 +24,9 @@ document.getElementById('formulario-cadastro').addEventListener('submit', functi
       document.getElementById('rg-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
     }
 
-    if (cpf.length !== 12) {
+    if (cpf.length !== 14) {
       event.preventDefault(); // Impede o envio do formulário se o comprimento do CPF não for o correto.
-      document.getElementById('cpf-error').textContent = 'O CPF deve ter 12 dígitos.';
+      document.getElementById('cpf-error').textContent = 'O CPF deve ter 11 dígitos.';
     } else {
       document.getElementById('cpf-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
     }
