@@ -49,7 +49,7 @@
      <% if (funcionarios.length > 0) { %>
          <% funcionarios.forEach(funcionario => { %>
              <div class="card">
-                 <img src="data:image/jpeg;base64, <%= funcionario.arquivo %>" alt="Foto do funcionário">
+                <div> <img src="<%= funcionario.arquivo %>" alt=""></div>
                  <p>Nome: <%= funcionario.nome %></p>
                  <p>Email: <%= funcionario.email %></p>
                  <p>PIS: <%= funcionario.pis %></p>
@@ -58,16 +58,17 @@
                  <p>Telefone: <%= funcionario.telefone %></p>
                 
                  <div class="card-buttons">
-                    <a href="/funcionario/editar/<%= funcionario.idfuncionario%>" class="btn btn-primary btn-edit">
-                       Editar
-                      </a>
-
-                    <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post">
-                        <button type="submit" class="btn-excluir">
-                           Excluir
-                        </button>
-                    </form> 
-                </div>
+                    <a href="/funcionario/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+                      <i class="fas fa-edit"></i> Editar
+                    </a>
+                  
+                    <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
+                      <button type="submit" class="btn btn-danger btn-excluir">
+                        <i class="fas fa-trash"></i> Excluir
+                      </button>
+                    </form>
+                  </div>
+                  
                 
              </div>
          <% }); %>
