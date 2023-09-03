@@ -1,5 +1,5 @@
 const db = require('./db');
-const bcrypt = require('bcrypt'); // Importe o bcrypt
+const bcrypt = require('bcrypt'); 
 
 module.exports = {
     checkEmailExists: async (email) => {

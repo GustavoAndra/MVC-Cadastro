@@ -18,7 +18,7 @@ module.exports = {
           const resultado = await funcionarioModel.inserirFuncionario(nome, pis, rg, cpf, telefone, email, arquivo, usuarioId);
     
           if (resultado.success) {
-            // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
+           
             res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
           } else {
             res.status(500).json({ message: 'Erro ao cadastrar o funcionário.' });
@@ -78,7 +78,7 @@ module.exports = {
 
 editarPessoa: async (req, res) => {
   const idPessoa = req.params.id;
-  const {nome, pis, rg, cpf, telefone, email, arquivo} = req.body; // Use chaves para extrair os dados diretamente
+  const {nome, pis, rg, cpf, telefone, email, arquivo} = req.body; 
 
   try {
       await funcionarioModel.atualizarPessoa(idPessoa, nome, pis, rg, cpf, telefone, email, arquivo);

@@ -8,4 +8,10 @@ loginRouter.get('/user', userController.mostrarFormularioLogin);
 // Rota para processar o login
 loginRouter.post('/user/login', userController.fazerLogin);
 
+// Rota para deslogar
+loginRouter.get('/deslogar', (req, res) => {
+    delete req.session.user;
+    res.redirect('/HomePage');
+  });
+
 module.exports = loginRouter;

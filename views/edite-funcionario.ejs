@@ -2,9 +2,8 @@
 <html lang="pt-br">
     <%- include('layout/default/headLogado.ejs') %>
 <body>
-  
     <h2>Editar Funcionário</h2>
-    <form method="post" action="/funcionario/editar/">
+    <form method="post" action="/funcionario/editar">
         <input type="hidden" name="id" value="<%= funcionario.id %>">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>

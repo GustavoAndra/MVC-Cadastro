@@ -3,10 +3,10 @@ const funcionarioModel = require('../models/funcionarioModel'); // Importe o mó
 
 module.exports = {
   HomePage: [
-    isAuthenticated, // Use o middleware aqui
+    isAuthenticated, 
     async (req, res) => {
       try {
-        // Supondo que você tenha uma função para buscar os funcionários no modelo
+     
         const usuarioId = req.session?.user?.idusuario;
         const resultado = await funcionarioModel.listarFuncionarioPorUsuario(usuarioId);
 

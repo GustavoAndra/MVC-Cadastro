@@ -58,14 +58,11 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
         }
     } catch (error) {
         console.error('Erro ao excluir funcionário:', error);
-        throw error; // Lançar a exceção para ser tratada por quem chamou a função
+        throw error; 
     } finally {
         connection.end();
     }
 };
-
-
-
 
 const editarFuncionarioPorId = async (funcionarioId, novoNome, novoPis, novoRg, novoCpf, novoTelefone, novoEmail, novoArquivo) => {
     const connection = await mysql.createConnection(connectionConfig);
@@ -106,7 +103,6 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
         connection.end();
     }
 };
-
 
 module.exports = {
     inserirFuncionario,

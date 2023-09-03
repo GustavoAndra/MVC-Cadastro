@@ -51,4 +51,9 @@ app.use(cadastroRouter);
 const cadastroFuncionarioRouter = require('./routers/funcionarioRouter');
 app.use(cadastroFuncionarioRouter);
 
+app.get('/user/deslogar', (req,res)=>{
+    delete req.session.user;
+    res.redirect('/user');
+})
+
 module.exports = app;

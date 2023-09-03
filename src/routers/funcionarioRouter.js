@@ -14,8 +14,10 @@ router.get('/listar/funcionario', funcionarioController.listarDetalhesFuncionari
 // Rota para excluir um funcionário pelo ID
 router.post('/funcionario/delete/:id', funcionarioController.excluirFuncionario);
 
+// Rota para mostrar o formulário do funcionário
 router.get('/funcionario/editar/:id', funcionarioController.mostrarFormularioEdicao);
 
+// Rota para editar um funcionário pelo ID
 router.post('/funcionario/editar/:id', funcionarioController.listarDetalhesFuncionario);
 
 module.exports = router;
