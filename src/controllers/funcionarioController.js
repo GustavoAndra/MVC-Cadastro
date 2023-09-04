@@ -21,8 +21,7 @@ module.exports = {
           // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
           res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
         } else {
-          
-          res.status(500).json({ message: 'Erro ao cadastrar o funcionário.' });
+          res.redirect('/Homepage?message=Erro ao cadastrar o funcionário');
         }
       } else {
         res.status(401).json({ message: 'ID de usuário ausente na sessão.' });
@@ -37,7 +36,7 @@ module.exports = {
   
           if (result.success) {
               // Redirecionar para a página inicial após a exclusão
-              res.redirect('/homePage');
+              res.redirect('/HomePage');
           } else {
               res.status(404).json(result); // Ou use outro código de status apropriado para funcionário não encontrado
           }
@@ -76,20 +75,6 @@ module.exports = {
     }
   },
   
-
-editarPessoa: async (req, res) => {
-  const idPessoa = req.params.id;
-  const {nome, pis, rg, cpf, telefone, email, arquivo} = req.body; 
-
-  try {
-      await funcionarioModel.atualizarPessoa(idPessoa, nome, pis, rg, cpf, telefone, email, arquivo);
-      res.redirect('/homepage'); 
-  } catch (error) {
-      console.error('Erro ao atualizar pessoa:', error);
-      res.status(500).send('Erro interno');
-  }
-},
-
   showEditePage: (req, res, next) => {
     isAuthenticated(req, res, () => {
       res.render('funcionario', {funcionario});
