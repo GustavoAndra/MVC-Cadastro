@@ -29,7 +29,18 @@ module.exports = {
     });
   },
     
-    excluirFuncionario: async (req, res) => {
+  listarDetalhesFuncionario: async (req, res) => {
+      try {
+          const usuarioId = req.session?.user?.idusuario;
+          const result = await funcionarioModel.listarFuncionarioPorUsuario(usuarioId);
+          res.json(result);
+      } catch (error) {
+          console.error('Erro ao listar detalhes do funcionário:', error);
+          res.status(500).json({ success: false, message: 'Erro ao listar detalhes do funcionário.' });
+      }
+  },
+  
+  excluirFuncionario: async (req, res) => {
       try {
           const { id } = req.params;
           const result = await funcionarioModel.excluirFuncionarioPorId(id);
@@ -45,39 +56,5 @@ module.exports = {
           res.status(500).json({ success: false, message: 'Erro interno do servidor' });
       }
   },
-  
-    listarDetalhesFuncionario: async (req, res) => {
-      try {
-          const usuarioId = req.session?.user?.idusuario;
-          const result = await funcionarioModel.listarFuncionarioPorUsuario(usuarioId);
-          res.json(result);
-      } catch (error) {
-          console.error('Erro ao listar detalhes do funcionário:', error);
-          res.status(500).json({ success: false, message: 'Erro ao listar detalhes do funcionário.' });
-      }
-  },
-  
-   // Controller para mostrar o formulário de edição
-   mostrarFormularioEdicao: async (req, res) => {
-    const idPessoa = req.params.id;
-  
-    try {
-        const pessoa = await funcionarioModel.editarFuncionarioPorId(idPessoa);
-  
-        if (!pessoa) {
-            res.redirect('/homepage'); // Redirecionar se a pessoa não for encontrada
-        } else {
-            res.render('edite-funcionario', { funcionario: pessoa }); // Passar a variável pessoa para o template EJS
-        }
-    } catch (error) {
-        console.error('Erro ao buscar funcionario:', error);
-        res.status(500).send('Erro interno');
-    }
-  },
-  
-  showEditePage: (req, res, next) => {
-    isAuthenticated(req, res, () => {
-      res.render('funcionario', {funcionario});
-    });
-  },
+
 }; 

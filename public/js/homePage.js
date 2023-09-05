@@ -17,7 +17,7 @@ document.getElementById('formulario-cadastro').addEventListener('submit', functi
       document.getElementById('pis-error').textContent = ''; // Limpa a mensagem de erro se estiver correta.
     }
 
-    if (rg.length !== 10) {
+    if (rg.length !== 9) {
       event.preventDefault(); // Impede o envio do formulário se o comprimento do RG não for o correto.
       document.getElementById('rg-error').textContent = 'O RG deve ter 10 dígitos.';
     } else {

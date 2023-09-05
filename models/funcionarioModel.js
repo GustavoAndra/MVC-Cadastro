@@ -64,27 +64,21 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
     }
 };
 
-const editarFuncionarioPorId = async (funcionarioId, novoNome, novoPis, novoRg, novoCpf, novoTelefone, novoEmail, novoArquivo) => {
-    const connection = await mysql.createConnection(connectionConfig);
-
-    try {
-        const [updateResult] = await connection.execute(
-            'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE id = ?',
-            [novoNome, novoPis, novoRg, novoCpf, novoTelefone, novoEmail, novoArquivo, funcionarioId]
-        );
-
-        if (updateResult.affectedRows === 1) {
-            return { success: true, message: 'Funcionário atualizado com sucesso.' };
-        } else {
-            return { success: false, message: 'Funcionário não encontrado.' };
-        }
+const atualizarPublicacao = async( nome, pis, rg, cpf, telefone, email, arquivo,funcionarioId) => {
+    try {  
+     const connection = await mysql.createConnection(connectionConfig);
+      const query = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?';
+      await connection.execute(query, [nome, pis, rg, cpf, telefone, email, arquivo,funcionarioId ]);
+  
+      console.log("Publicação atualizada com sucesso");
+  
+      return true; 
     } catch (error) {
-        console.error('Erro ao editar funcionário:', error);
-        return { success: false, message: 'Erro ao editar funcionário.' };
-    } finally {
-        connection.end();
+      console.error("Erro ao atualizar a publicação com ID");
+      throw error;
     }
-};
+  };
+
 
 const listarFuncionarioPorUsuario = async (usuarioId) => {
     const connection = await mysql.createConnection(connectionConfig);
@@ -107,6 +101,6 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
 module.exports = {
     inserirFuncionario,
     excluirFuncionarioPorId,
-    editarFuncionarioPorId,
+    atualizarPublicacao,
     listarFuncionarioPorUsuario
 };
