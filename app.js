@@ -36,15 +36,11 @@ const {
 } = require('./config');
 
 // Rotas
-const homeRouter = require('./routers/homeRouter');
-
-const dashboardRouter = require('./routers/HomePageRouter');
-
-const loginRouter = require('./routers/loginRouter');
-
-const cadastroRouter = require('./routers/cadastroRouter');
-
-const cadastroFuncionarioRouter = require('./routers/funcionarioRouter');
+const homeRouter = require('./src/routers/homeRouter');
+const dashboardRouter = require('./src/routers/HomePageRouter');
+const loginRouter = require('./src/routers/loginRouter');
+const cadastroRouter = require('./src/routers/cadastroRouter');
+const cadastroFuncionarioRouter = require('./src/routers/funcionarioRouter');
 
 app.use(homeRouter);
 
