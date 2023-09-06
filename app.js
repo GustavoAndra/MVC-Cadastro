@@ -12,7 +12,9 @@ app.use(express.json());
 // Configuração de arquivos estáticos
 app.use(express.static(path.join (__dirname,"public")));
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // Substitua 'ejs' pelo mecanismo de visualização que você está usando
+app.set('views', path.join(__dirname, 'views')); // Certifique-se de que o caminho esteja correto
+
 
 // Configuração do express-session
 app.use(session({
@@ -36,11 +38,11 @@ const {
 } = require('./config');
 
 // Rotas
-const homeRouter = require('./src/routers/homeRouter');
-const dashboardRouter = require('./src/routers/HomePageRouter');
-const loginRouter = require('./src/routers/loginRouter');
-const cadastroRouter = require('./src/routers/cadastroRouter');
-const cadastroFuncionarioRouter = require('./src/routers/funcionarioRouter');
+const homeRouter = require('./routers/homeRouter');
+const dashboardRouter = require('./routers/HomePageRouter');
+const loginRouter = require('./routers/loginRouter');
+const cadastroRouter = require('./routers/cadastroRouter');
+const cadastroFuncionarioRouter = require('./routers/funcionarioRouter');
 
 app.use(homeRouter);
 

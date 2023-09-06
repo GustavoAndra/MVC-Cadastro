@@ -1,5 +1,4 @@
 const mysql = require('mysql2/promise');
-
 const connectionConfig = {
     host: 'containers-us-west-37.railway.app',
     user: 'root',
@@ -64,22 +63,6 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
     }
 };
 
-const atualizarPublicacao = async( nome, pis, rg, cpf, telefone, email, arquivo,funcionarioId) => {
-    try {  
-     const connection = await mysql.createConnection(connectionConfig);
-      const query = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?';
-      await connection.execute(query, [nome, pis, rg, cpf, telefone, email, arquivo,funcionarioId ]);
-  
-      console.log("Publicação atualizada com sucesso");
-  
-      return true; 
-    } catch (error) {
-      console.error("Erro ao atualizar a publicação com ID");
-      throw error;
-    }
-  };
-
-
 const listarFuncionarioPorUsuario = async (usuarioId) => {
     const connection = await mysql.createConnection(connectionConfig);
 
@@ -98,9 +81,73 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
     }
 };
 
+const atualizarFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, idfuncionario) => {
+    const connection = await mysql.createConnection(connectionConfig); 
+
+    const sql = `UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?`;
+    const values = [nome, pis, rg, cpf, telefone, email, arquivo, idfuncionario]; 
+
+    try {
+        // Não declare a variável connection novamente aqui, use a que já foi declarada acima
+        const [rows] = await connection.query(sql, values);
+
+        if (rows.length === 1) {
+            // Retorna a pessoa encontrada
+            return rows[0];
+        } else {
+            // Retorna null se a pessoa não for encontrada
+            return null;
+        }
+    } catch (error) {
+        console.error('Erro ao buscar pessoa por ID:', error);
+        throw error;
+    }
+};
+
+
+const Publicacao = async (id) => {
+    try {
+      const connection = await mysql.createConnection(connectionConfig);
+      const query = 'SELECT * FROM funcionario WHERE idfuncionario = ?';
+      const [rows] = await connection.execute(query, [id]);
+  
+      if (rows.length === 1) {
+        return rows[0];
+      } else {
+        return null; 
+      }
+    } catch (error) {
+      console.error(`Erro ao buscar a publicação com ID ${id}:`, error);
+      throw error;
+    }
+  };
+  
+  async function obterPessoaPorId(idfuncionario) {
+    const sql = 'SELECT * FROM funcionario WHERE idfuncionario = ?';
+    const values = [idfuncionario];
+  
+    try {
+      const connection = await mysql.createConnection(connectionConfig);
+      const [rows] = await connection.query(sql, values);
+  
+      if (rows.length === 1) {
+        // Retorna o funcionário encontrado
+        return rows[0];
+      } else {
+        // Retorna null se o funcionário não for encontrado
+        return null;
+      }
+    } catch (error) {
+      console.error('Erro ao buscar funcionario por ID:', error);
+      throw error;
+    }
+  };
+  
 module.exports = {
     inserirFuncionario,
     excluirFuncionarioPorId,
-    atualizarPublicacao,
-    listarFuncionarioPorUsuario
+    listarFuncionarioPorUsuario,
+    atualizarFuncionario,
+    Publicacao,
+    obterPessoaPorId
 };

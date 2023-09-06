@@ -3,7 +3,8 @@
     <%- include('layout/default/headLogado.ejs') %>
 <body>
     <h2>Editar Funcionário</h2>
-    <form method="post" action="/atualizar/<%= funcionario .idfuncionario %>">
+    <form action="/funcionario/atualizar/<%= funcionario.idfuncionario %>" method="post">
+
         <label for="nome">Nome:</label>
         <input type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>
         
