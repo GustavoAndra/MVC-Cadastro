@@ -1,15 +1,4 @@
 const funcionarioModel = require('../models/funcionarioModel');
-const multer = require('multer');
-
-const storage = multer.diskStorage({
-  destination: './img', filename: (req, file, cb) => { 
-    const hash = Math.random().toString(36).substring(7);
-    const filename = `${hash}_${file.originalname}`;
-    cb(null, filename);  // função cb
-  }
-});
-
-const upload = multer({ storage });
 
 async function showFormulario(req, res) {
     const idfuncionario = req.params.id;

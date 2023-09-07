@@ -79,12 +79,10 @@ const atualizarFuncionario = async (id, newData) => {
     } catch (error) {
        
         console.error('Erro ao editar funcionario:', error);
-        // Rethrow the error to propagate it up the call stack
+      
         throw error;
     }
 };
-
-
 
 const Publicacao = async (id) => {
     try {

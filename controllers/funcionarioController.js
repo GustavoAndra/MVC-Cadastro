@@ -3,11 +3,12 @@ const isAuthenticated = require('./midlewareController');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
-  destination: './imagens', filename: (req, file, cb) => { 
+  destination: './img',
+  filename: (req, file, cb) => {
     const hash = Math.random().toString(36).substring(7);
     const filename = `${hash}_${file.originalname}`;
-    cb(null, filename);  // função cb
-  }
+    cb(null, filename);
+  },
 });
 
 const upload = multer({ storage });
@@ -20,26 +21,47 @@ module.exports = {
   },
 
   inserirFuncionario: async (req, res) => {
-    const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
+    const { nome, pis, rg, cpf, telefone, email } = req.body;
+  
+    // Verifique se foi feito o upload de uma imagem
+    if (!req.file) {
+      return res.status(400).json({ message: 'Imagem não enviada.' });
+    }
+  
+    const arquivo = req.file.filename; // Nome do arquivo gerado pelo Multer
   
     isAuthenticated(req, res, async () => {
       const usuarioId = req.session?.user?.idusuario;
   
       if (usuarioId !== undefined) {
-        const resultado = await funcionarioModel.inserirFuncionario(nome, pis, rg, cpf, telefone, email, arquivo, usuarioId);
+        try {
+          const resultado = await funcionarioModel.inserirFuncionario(
+            nome,
+            pis,
+            rg,
+            cpf,
+            telefone,
+            email,
+            arquivo,
+            usuarioId
+          );
   
-        if (resultado.success) {
-          // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
-          res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
-        } else {
-          res.redirect('/Homepage?message=Erro ao cadastrar o funcionário');
+          if (resultado.success) {
+            // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
+            res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
+          } else {
+            res.redirect('/Homepage?message=Erro ao cadastrar o funcionário');
+          }
+        } catch (error) {
+          console.error('Erro ao inserir funcionário:', error);
+          res.status(500).json({ message: 'Erro ao inserir funcionário.' });
         }
       } else {
         res.status(401).json({ message: 'ID de usuário ausente na sessão.' });
       }
     });
   },
-    
+  
   listarDetalhesFuncionario: async (req, res) => {
       try {
           const usuarioId = req.session?.user?.idusuario;

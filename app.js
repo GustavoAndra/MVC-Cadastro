@@ -11,8 +11,8 @@ app.use(express.json());
 // Configuração de arquivos estáticos
 app.use(express.static(path.join (__dirname,"public")));
 app.use('/img', express.static(__dirname + '/img'));
-app.set('view engine', 'ejs'); // Substitua 'ejs' pelo mecanismo de visualização que você está usando
-app.set('views', path.join(__dirname, 'views')); // Certifique-se de que o caminho esteja correto
+app.set('view engine', 'ejs'); 
+app.set('views', path.join(__dirname, 'views'));
 
 
 // Configuração do express-session
