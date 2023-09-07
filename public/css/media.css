@@ -33,6 +33,10 @@
     .footer-col{
       width: 100%;
   }
+  }@media screen and (min-width: 768px) {
+    .card img {
+      max-width: 50%; /* Ou outro tamanho desejado */
+    }
   }@keyframes showSidebar {
     from {margin-left: -100vw;}
     to {margin-left: -10vw;}

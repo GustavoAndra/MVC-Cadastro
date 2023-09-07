@@ -73,16 +73,20 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
 
 const atualizarFuncionario = async (id, newData) => {
     const { nome, pis, rg, cpf, telefone, email, arquivo } = newData;
+    const connection = await mysql.createConnection(connectionConfig);
+  
     try {
-        await db.query('UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?',
-            [nome, pis, rg, cpf, telefone, email, arquivo, id]);
+      await connection.execute(
+        'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?',
+        [nome, pis, rg, cpf, telefone, email, arquivo, id]
+      );
     } catch (error) {
-       
-        console.error('Erro ao editar funcionario:', error);
-      
-        throw error;
+      console.error('Erro ao editar funcionário:', error);
+      throw error;
+    } finally {
+      connection.end();
     }
-};
+  };
 
 const Publicacao = async (id) => {
     try {

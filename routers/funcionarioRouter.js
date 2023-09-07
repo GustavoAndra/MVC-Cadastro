@@ -19,9 +19,9 @@ router.get('/listar/funcionario', funcionarioController.listarDetalhesFuncionari
 router.post('/funcionario/delete/:id', funcionarioController.excluirFuncionario);
 
 // Rota para excluir um funcionário pelo ID
-router.get('/funcionario/editar/:id', editeController.showFormulario);
+router.get('/funcionario/editar/:id', editeController.getEditarCardapio);
 
 // Rota para excluir um funcionário pelo ID
-router.post('/funcionario/editar/:id', editeController.editarPessoa);
+router.post('/funcionario/editar/:id', editeController.postEditarCardapio);
 
 module.exports = router;

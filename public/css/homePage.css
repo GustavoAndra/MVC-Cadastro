@@ -93,8 +93,13 @@ section{
 .card:hover {
     transform: scale(0.9) translateZ(-20px);
 }
-.card img{
-    border-radius: 10px 10px 0 0;
+.card img {
+    max-width: 100vw;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centralizar horizontalmente */
+    margin-bottom: 25px;
+    border: 1px solid #ddd; /* Borda opcional para a imagem */
 }
 .card-img-top{
     object-fit: cover; /* Dimensiona a imagem para preencher o espaço da imagem */
