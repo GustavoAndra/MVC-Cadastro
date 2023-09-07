@@ -7,7 +7,7 @@ async function showfuncionario(req, res) {
       if (!funcionario) {
         res.redirect('/HomePage'); 
     } else {
-        res.render('edite-funcionario', { funcionario }); 
+        res.render('editefuncionario', { funcionario }); 
     }
   } catch (error) {
       res.status(500).send('Erro ao carregar a página de edição dos funcionários.');

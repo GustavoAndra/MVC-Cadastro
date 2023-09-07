@@ -6,12 +6,18 @@
   <%- include('layout/default/headerLogado.ejs') %>
    <%- include('layout/default/msg.ejs') %>
  
-    <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
-        <div class="parallax-content">
-            <h2>Seja muito bem-vindo à EvoTech Solutions</h2>
-            <p>É com grande alegria que recebemos você em nossa comunidade tecnológica. </p>
-        </div>
-    </section>
+   <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
+    <div class="parallax-content">
+         <% if (nome) { %>
+          <h2>Seja muito bem-vindo <%= nome %> à EvoTech Solutions </h2>
+        <% } %>
+
+        <p>É com grande alegria que recebemos você em nossa comunidade tecnológica.</p>
+    </div>
+</section>
+
+
+
 <main>
     <section id="agradecimento" class="d-flex align-items-center">
         <div class="container-fluid">
