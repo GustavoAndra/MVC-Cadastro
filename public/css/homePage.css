@@ -115,6 +115,7 @@ p{
     margin-left: 25px;
     font-weight: 400;
     justify-content: center;
+        animation: h2 3s ease-in-out forwards;
 }
 ul{
 	list-style: none;
@@ -213,7 +214,7 @@ footer{
     margin-right: 20px;
     margin-bottom: 50px;
     font-size: 30px;
-    color: #141212;
+    color: #000;
     text-transform: uppercase;
     animation: h2 3s ease-in-out forwards;
 }
