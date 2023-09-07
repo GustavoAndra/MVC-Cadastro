@@ -48,41 +48,46 @@
     </section>
     
     <section id="funcionario-details">
-      <h2>Controle aqui seus Funcionários</h2>
-      <div class="cards-container">
-        <% if (success) { %>
-          <% if (funcionarios.length > 0) { %>
-            <% funcionarios.forEach(funcionario => { %>
-              <div class="card">
-                <img src="/img/<%= funcionario.arquivo %>" alt="Imagem não encontrada">
-                <div class="card-content">
-                  <p><strong>Nome:</strong> <%= funcionario.nome %></p>
-                  <p><strong>Email:</strong> <%= funcionario.email %></p>
-                  <p><strong>PIS:</strong> <%= funcionario.pis %></p>
-                  <p><strong>RG:</strong> <%= funcionario.rg %></p>
-                  <p><strong>CPF:</strong> <%= funcionario.cpf %></p>
-                  <p><strong>Telefone:</strong> <%= funcionario.telefone %></p>
+      <h2 class="text-center">Controle aqui seus Funcionários</h2>
+      <div class="container">
+        <div class="row">
+          <% if (success) { %>
+            <% if (funcionarios.length > 0) { %>
+              <% funcionarios.forEach(funcionario => { %>
+                <div class="col-md-4">
+                  <div class="card mb-4">
+                    <img src="/img/<%= funcionario.arquivo %>" alt="Imagem não encontrada" class="card-img-top">
+                    <div class="card-body">
+                      <p class="card-title"><strong>Nome:</strong> <%= funcionario.nome %></p>
+                      <p class="card-text"><strong>Email:</strong> <%= funcionario.email %></p>
+                      <p class="card-text"><strong>PIS:</strong> <%= funcionario.pis %></p>
+                      <p class="card-text"><strong>RG:</strong> <%= funcionario.rg %></p>
+                      <p class="card-text"><strong>CPF:</strong> <%= funcionario.cpf %></p>
+                      <p class="card-text"><strong>Telefone:</strong> <%= funcionario.telefone %></p>
+                    </div>
+                    <div class="card-footer text-right">
+                      <a href="/edit/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+                        <i class="fas fa-edit"></i> Editar
+                      </a>
+                      <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger btn-excluir">
+                          <i class="fas fa-trash"></i> Excluir
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-                <div class="card-buttons">
-                  <a href="/edit/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
-                    <i class="fas fa-edit"></i> Editar
-                  </a>
-                  <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
-                    <button type="submit" class="btn btn-danger btn-excluir">
-                      <i class="fas fa-trash"></i> Excluir
-                    </button>
-                  </form>
-                </div>
-              </div>
-            <% }); %>
+              <% }); %>
+            <% } else { %>
+              <p class="col-12">Nenhum funcionário cadastrado.</p>
+            <% } %>
           <% } else { %>
-            <p>Nenhum funcionário cadastrado.</p>
+            <p class="col-12">Erro ao carregar funcionários.</p>
           <% } %>
-        <% } else { %>
-          <p>Erro ao carregar funcionários.</p>
-        <% } %>
+        </div>
       </div>
     </section>
+    
     
 </main>
     <%- include('layout/default/footer.ejs') %>
