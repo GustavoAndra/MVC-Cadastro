@@ -11,8 +11,6 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage });
-
 module.exports = {
   showHomePage: (req, res, next) => {
     isAuthenticated(req, res, () => {

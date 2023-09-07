@@ -76,10 +76,19 @@ const atualizarFuncionario = async (id, newData) => {
     const connection = await mysql.createConnection(connectionConfig);
   
     try {
-      await connection.execute(
-        'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?',
-        [nome, pis, rg, cpf, telefone, email, arquivo, id]
-      );
+      let updateQuery = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?';
+      const updateValues = [nome, pis, rg, cpf, telefone, email];
+  
+      // Verifique se um novo arquivo de imagem foi fornecido
+      if (arquivo) {
+        updateQuery += ', arquivo = ?';
+        updateValues.push(arquivo);
+      }
+  
+      updateQuery += ' WHERE idfuncionario = ?';
+      updateValues.push(id);
+  
+      await connection.execute(updateQuery, updateValues);
     } catch (error) {
       console.error('Erro ao editar funcionário:', error);
       throw error;
@@ -87,25 +96,9 @@ const atualizarFuncionario = async (id, newData) => {
       connection.end();
     }
   };
+  
 
-const Publicacao = async (id) => {
-    try {
-      const connection = await mysql.createConnection(connectionConfig);
-      const query = 'SELECT * FROM funcionario WHERE idfuncionario = ?';
-      const [rows] = await connection.execute(query, [id]);
-  
-      if (rows.length === 1) {
-        return rows[0];
-      } else {
-        return null; 
-      }
-    } catch (error) {
-      console.error(`Erro ao buscar a publicação com ID ${id}:`, error);
-      throw error;
-    }
-  };
-  
-  async function obterPessoaPorId(idfuncionario) {
+ async function obterFuncionario(idfuncionario) {
     const sql = 'SELECT * FROM funcionario WHERE idfuncionario = ?';
     const values = [idfuncionario];
   
@@ -131,6 +124,5 @@ module.exports = {
     excluirFuncionarioPorId,
     listarFuncionarioPorUsuario,
     atualizarFuncionario,
-    Publicacao,
-    obterPessoaPorId
+    obterFuncionario
 };

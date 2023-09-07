@@ -1,33 +1,39 @@
 const funcionarioModel = require('../models/funcionarioModel');
 
-async function getEditarCardapio(req, res) {
+async function showfuncionario(req, res) {
   const { id } = req.params;
   try {
-      const funcionario = await funcionarioModel.obterPessoaPorId(id);
+      const funcionario = await funcionarioModel.obterFuncionario(id);
       if (!funcionario) {
         res.redirect('/HomePage'); 
     } else {
         res.render('edite-funcionario', { funcionario }); 
     }
   } catch (error) {
-      res.status(500).send('Erro ao carregar a página de edição de cardápio.');
+      res.status(500).send('Erro ao carregar a página de edição dos funcionários.');
   }
 }
 
-async function postEditarCardapio(req, res) {
+async function atualizarFuncionario(req, res) {
   const { id } = req.params;
   const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
   try {
     const newData = {
-      nome, pis, rg, cpf, telefone, email, arquivo
+      nome, 
+      pis,
+      rg,
+      cpf,
+      telefone,
+      email,
+      arquivo
     };
 
     await funcionarioModel.atualizarFuncionario(id, newData);
 
     res.redirect('/HomePage');
   } catch (error) {
-    res.status(500).send('Erro ao editar o cardápio.');
+    res.status(500).send('Erro ao editar o funcionário.');
   }
 }
 
-module.exports = {getEditarCardapio, postEditarCardapio};
+module.exports = {showfuncionario, atualizarFuncionario};
