@@ -1,12 +1,12 @@
 const isAuthenticated = require('./midlewareController');
-const funcionarioModel = require('../models/funcionarioModel'); // Importe o módulo aqui
+const funcionarioModel = require('../models/funcionarioModel');
 
 module.exports = {
   HomePage: [
     isAuthenticated, 
     async (req, res) => {
+      
       try {
-     
         const usuarioId = req.session?.user?.idusuario;
         const resultado = await funcionarioModel.listarFuncionarioPorUsuario(usuarioId);
 

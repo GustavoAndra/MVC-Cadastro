@@ -1,26 +1,31 @@
 const express = require('express');
 const app = express();
+const cookieParser = require('cookie-parser');
 const path = require('path');
 const session = require('express-session');
 const cors = require('cors');
+const flash = require('connect-flash');
+
 // Middleware
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Configuração de arquivos estáticos
-app.use(express.static(path.join (__dirname,"public")));
+app.use(express.static(path.join(__dirname, "public")));
 app.use('/img', express.static(__dirname + '/img'));
-app.set('view engine', 'ejs'); 
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-
 // Configuração do express-session
+app.use(cookieParser());
 app.use(session({
     secret: 'info63',
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 } // Configure o tempo de expiração do cookie da sessão conforme necessário
 }));
+app.use(flash());
 
 app.locals = {
     stylesPath: '/styles',   // Caminho para os arquivos de estilo

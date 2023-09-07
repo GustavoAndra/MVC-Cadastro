@@ -29,6 +29,12 @@ class UsuarioController {
             res.redirect('/user');
         }
     }
+    
+    //Função para deslogar o usuário
+    async logout(req,res) {
+        delete req.session.user;
+    res.redirect('/HomePage');
+    }
 }
 
 module.exports = new UsuarioController();

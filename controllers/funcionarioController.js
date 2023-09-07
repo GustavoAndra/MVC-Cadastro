@@ -43,13 +43,14 @@ module.exports = {
             arquivo,
             usuarioId
           );
-  
           if (resultado.success) {
-            // Redirecione para a página '/Homepage' com uma mensagem de sucesso.
-            res.redirect('/Homepage?message=Funcionário cadastrado com sucesso');
-          } else {
-            res.redirect('/Homepage?message=Erro ao cadastrar o funcionário');
-          }
+            req.session.successMessage = 'Funcionário criado com sucesso';
+        } else {
+            req.session.errorMessage = 'Houve um problema ao adicionar seu funcionário';
+        }
+    
+        res.redirect('/HomePage'); 
+      
         } catch (error) {
           console.error('Erro ao inserir funcionário:', error);
           res.status(500).json({ message: 'Erro ao inserir funcionário.' });

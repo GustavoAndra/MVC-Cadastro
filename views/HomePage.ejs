@@ -2,17 +2,17 @@
 <html lang="pt-br">
     <%- include('layout/default/headLogado.ejs') %>
 <body>
-    <%- include('layout/default/headerLogado.ejs') %>
-
+  
+  <%- include('layout/default/headerLogado.ejs') %>
+   <%- include('layout/default/msg.ejs') %>
+ 
     <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
         <div class="parallax-content">
             <h2>Seja muito bem-vindo à EvoTech Solutions</h2>
             <p>É com grande alegria que recebemos você em nossa comunidade tecnológica. </p>
         </div>
     </section>
-
 <main>
-
     <section id="agradecimento" class="d-flex align-items-center">
         <div class="container-fluid">
             <div class="row">
@@ -57,7 +57,7 @@
                 <p><strong>Telefone:</strong> <%= funcionario.telefone %></p>
               
               <div class="card-buttons">
-                <a href="/funcionario/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+                <a href="/edit/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
                   <i class="fas fa-edit"></i> Editar
                 </a>
                 <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
@@ -79,5 +79,5 @@
 </main>
     <%- include('layout/default/footer.ejs') %>
 </body>
-<script src="<%= locals.jsPath %>/homePage.js"></script>
+
 </html>
