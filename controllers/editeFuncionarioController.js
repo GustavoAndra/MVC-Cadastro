@@ -1,11 +1,21 @@
+const funcionarioModel = require('../models/funcionarioModel');
+const multer = require('multer');
 
-const editarModel = require('../models/funcionarioModel');
+const storage = multer.diskStorage({
+  destination: './img', filename: (req, file, cb) => { 
+    const hash = Math.random().toString(36).substring(7);
+    const filename = `${hash}_${file.originalname}`;
+    cb(null, filename);  // função cb
+  }
+});
+
+const upload = multer({ storage });
 
 async function showFormulario(req, res) {
     const idfuncionario = req.params.id;
 
     try {
-        const funcionario = await editarModel.obterPessoaPorId(idfuncionario);
+        const funcionario = await funcionarioModel.obterPessoaPorId(idfuncionario);
 
         if (!funcionario) {
             res.redirect('/HomePage'); 
@@ -19,21 +29,19 @@ async function showFormulario(req, res) {
 }
 
 async function editarPessoa(req, res) {
-    const idfuncionario = req.params.id;
-    const nome = req.body.nome;
-    const pis = req.body.pis;
-    const rg = req.body.rg;
-    const cpf = req.body.cpf;
-    const telefone= req.body.telefone;
-    const email = req.body.email;
-    const arquivo = req.body.arquivo;
-    try {
-        await editarModel.atualizarFuncionario(idfuncionario,nome, pis, rg, cpf, telefone, email, arquivo);
-        res.redirect('/HomePage');
-    } catch (error) {
-        console.error('Erro ao atualizar funcionario:', error);
-        res.status(500).send('Erro interno');
-    }
+  const { id } = req.params;
+  const {nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
+  try {
+    const newData = {
+        nome, pis, rg, cpf, telefone, email, arquivo
+    };
+
+    await funcionarioModel.atualizarFuncionario(id, newData);
+
+    res.redirect('/HomePage');
+  } catch (error) {
+    res.status(500).send('Erro ao editar o funcionario.');
+  }
 }
 
 module.exports = {showFormulario, editarPessoa};

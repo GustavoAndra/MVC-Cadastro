@@ -11,16 +11,6 @@ const inserirFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, 
     const connection = await mysql.createConnection(connectionConfig);
 
     try {
-        if (!nome || !cpf || !email) {
-            return { success: false, message: 'Campos obrigatórios não preenchidos.' };
-        }
-
-        const [cpfResult] = await connection.query('SELECT * FROM funcionario WHERE cpf = ?', [cpf]);
-
-        if (cpfResult.length > 0) {
-            return { success: false, message: 'Funcionário já existe.' };
-        }
-
         const [insertResult] = await connection.execute(
             'INSERT INTO funcionario (nome, pis, rg, cpf, telefone, email, arquivo, usuario_idusuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
             [nome, pis, rg, cpf, telefone, email, arquivo, usuarioId]
@@ -81,28 +71,19 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
     }
 };
 
-const atualizarFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, idfuncionario) => {
-    const connection = await mysql.createConnection(connectionConfig); 
-
-    const sql = `UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?`;
-    const values = [nome, pis, rg, cpf, telefone, email, arquivo, idfuncionario]; 
-
+const atualizarFuncionario = async (id, newData) => {
+    const { nome, pis, rg, cpf, telefone, email, arquivo } = newData;
     try {
-        // Não declare a variável connection novamente aqui, use a que já foi declarada acima
-        const [rows] = await connection.query(sql, values);
-
-        if (rows.length === 1) {
-            // Retorna a pessoa encontrada
-            return rows[0];
-        } else {
-            // Retorna null se a pessoa não for encontrada
-            return null;
-        }
+        await db.query('UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?, arquivo = ? WHERE idfuncionario = ?',
+            [nome, pis, rg, cpf, telefone, email, arquivo, id]);
     } catch (error) {
-        console.error('Erro ao buscar pessoa por ID:', error);
+       
+        console.error('Erro ao editar funcionario:', error);
+        // Rethrow the error to propagate it up the call stack
         throw error;
     }
 };
+
 
 
 const Publicacao = async (id) => {

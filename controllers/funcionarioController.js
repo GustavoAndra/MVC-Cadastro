@@ -1,5 +1,16 @@
 const funcionarioModel = require('../models/funcionarioModel');
-const isAuthenticated = require('./midlewareController'); // Verifique a ortografia
+const isAuthenticated = require('./midlewareController');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: './imagens', filename: (req, file, cb) => { 
+    const hash = Math.random().toString(36).substring(7);
+    const filename = `${hash}_${file.originalname}`;
+    cb(null, filename);  // função cb
+  }
+});
+
+const upload = multer({ storage });
 
 module.exports = {
   showHomePage: (req, res, next) => {
