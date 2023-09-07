@@ -69,6 +69,20 @@ form{
 .field input:focus{
     border-bottom-width: 2px;
 }
+.field.google {
+    padding: 10px; /* Ajuste o padding para controlar o tamanho geral do botão */
+    background-color: #fff; /* Defina uma cor de fundo para o botão */
+    border-radius: 10px; /* Torna o botão redondinho */
+    display: inline-flex; /* Para alinhar verticalmente */
+    align-items: center; /* Alinhar itens verticalmente */
+    text-decoration: none; /* Remova a decoração de texto padrão */
+}
+
+.field.google img {
+    width: 24px; /* Defina a largura do ícone */
+    height: 24px; /* Defina a altura do ícone */
+    margin-right: 40px; /* Espaçamento à direita do ícone */
+}
 .eye-icon{
     position: absolute;
     top: 50%;

@@ -13,10 +13,11 @@ async function showfuncionario(req, res) {
       res.status(500).send('Erro ao carregar a página de edição dos funcionários.');
   }
 }
-
 async function atualizarFuncionario(req, res) {
   const { id } = req.params;
-  const { nome, pis, rg, cpf, telefone, email, arquivo } = req.body;
+  const { nome, pis, rg, cpf, telefone, email} = req.body;
+  const arquivo = req.file;
+
   try {
     const newData = {
       nome, 
@@ -28,11 +29,13 @@ async function atualizarFuncionario(req, res) {
       arquivo
     };
 
-    await funcionarioModel.atualizarFuncionario(id, newData);
+    await funcionarioModel.atualizarFuncionario(id, newData, req);
 
-    res.redirect('/HomePage');
+    // Redireciona para a página desejada após a atualização (por exemplo, a página de detalhes do funcionário)
+    res.redirect(`/HomePage`);
   } catch (error) {
-    res.status(500).send('Erro ao editar o funcionário.');
+    console.error('Erro ao editar o funcionário:', error);
+    res.status(500).send('Erro ao editar o funcionário. Por favor, tente novamente mais tarde.');
   }
 }
 

@@ -84,30 +84,21 @@ section{
     margin-top: 20px;
     margin-bottom: 100px;
 }
-.card{
+.card {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-    transform: scale(0.9) translateY(-20px);
-    border-radius: 10px 10px 0 0;
+    border-radius: 10px;
     height: 100%;
 }
 .card:hover {
-    transform: scale(0.9) translateZ(-20px);
+    transform: scale(1.05); /* Aumenta o tamanho do card ao passar o mouse */
 }
 .card img {
-    max-width: 100%; 
-    height: 100vh; 
+    width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto; 
-    margin-bottom: 25px;
-    border: 1px solid #ddd; 
-}
-.card-img-top {
-    object-fit: cover; /* Dimensiona a imagem para preencher o espaço da imagem */
-    width: 100%; /* Ajusta a largura máxima para manter a responsividade */
-    max-height: 350px; /* Define a altura máxima da imagem */
 }
 .card-description {
-    max-height: 200px;
+    max-height: 100px; /* Ajuste a altura máxima do conteúdo */
     overflow: hidden;
 }
 p{

@@ -4,13 +4,11 @@
 <body>
   
   <%- include('layout/default/headerLogado.ejs') %>
-   <%- include('layout/default/msg.ejs') %>
- 
+
    <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
     <div class="parallax-content">
-      <h2 class="mobile-welcome">Seja muito bem-vindo</h2>
-      <h2><%= nome %></h2> 
-      <h2>à EvoTech Solutions</h2>
+      <h2> Seja muito bem-vindo <%= nome %></h2> 
+
         <p>É com grande alegria que recebemos você em nossa comunidade tecnológica.</p>
     </div>
 </section>
@@ -66,14 +64,16 @@
                       <p class="card-text"><strong>Telefone:</strong> <%= funcionario.telefone %></p>
                     </div>
                     <div class="card-footer text-right">
-                      <a href="/edit/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
-                        <i class="fas fa-edit"></i> Editar
-                      </a>
-                      <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-danger btn-excluir">
-                          <i class="fas fa-trash"></i> Excluir
-                        </button>
-                      </form>
+                      <div class="card-footer d-flex justify-content-between">
+                        <a href="/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+                            <i class="fas fa-edit"></i> Editar
+                        </a>
+                        <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post">
+                            <button type="submit" class="btn btn-danger btn-excluir">
+                                <i class="fas fa-trash"></i> Excluir
+                            </button>
+                        </form>
+                    </div>
                     </div>
                   </div>
                 </div>

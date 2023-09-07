@@ -4,7 +4,7 @@
     <%- include('layout/default/headerLogado.ejs') %>
     <section class="container">
         <h2>Editar Funcionário</h2>
-        <form action="/funcionario/editar/<%= funcionario.idfuncionario %>" method="post" >
+        <form action="/editar/<%= funcionario.idfuncionario %>" method="post" enctype="multipart/form-data">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>
             
@@ -24,8 +24,8 @@
             <input type="text" id="telefone" name="telefone" value="<%= funcionario.telefone %>"><br>
             
             <label for="arquivo">Arquivo:</label>
-            <input type="file" id="arquivo" name="arquivo" value="<%= funcionario.arquivo %>"><br>
-        
+            <input type="file" id="arquivo" name="arquivo" value="<%= funcionario.telefone %>"><br>
+            
             <button type="submit">Atualizar</button>
         </form>
     </section>

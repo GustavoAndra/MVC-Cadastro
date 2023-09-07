@@ -71,31 +71,34 @@ const listarFuncionarioPorUsuario = async (usuarioId) => {
     }
 };
 
-const atualizarFuncionario = async (id, newData) => {
-    const { nome, pis, rg, cpf, telefone, email, arquivo } = newData;
+const atualizarFuncionario = async (id, newData, req) => {
+    const { nome, pis, rg, cpf, telefone, email } = newData;
     const connection = await mysql.createConnection(connectionConfig);
-  
+    const arquivo = req.file; // Certifique-se de que o middleware multer esteja configurado para lidar com arquivos
+    
     try {
-      let updateQuery = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?';
-      const updateValues = [nome, pis, rg, cpf, telefone, email];
+        let updateQuery = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?';
+        const updateValues = [nome, pis, rg, cpf, telefone, email];
+
+        // Verifique se um novo arquivo de imagem foi fornecido
+        if (arquivo) {
+            updateQuery += ', arquivo = ?';
+            updateValues.push(arquivo.filename); // Use o nome do arquivo retornado pelo Multer
+        }
   
-      // Verifique se um novo arquivo de imagem foi fornecido
-      if (arquivo) {
-        updateQuery += ', arquivo = ?';
-        updateValues.push(arquivo);
-      }
+        updateQuery += ' WHERE idfuncionario = ?';
+        updateValues.push(id);
   
-      updateQuery += ' WHERE idfuncionario = ?';
-      updateValues.push(id);
-  
-      await connection.execute(updateQuery, updateValues);
+        await connection.execute(updateQuery, updateValues);
     } catch (error) {
-      console.error('Erro ao editar funcionário:', error);
-      throw error;
+        console.error('Erro ao editar funcionário:', error);
+        throw error;
     } finally {
-      connection.end();
+        connection.end();
     }
-  };
+};
+
+
   
 
  async function obterFuncionario(idfuncionario) {
