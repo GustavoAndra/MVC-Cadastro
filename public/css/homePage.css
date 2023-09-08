@@ -79,10 +79,13 @@ section{
     margin-bottom: 100px;
 }
 .card {
+    display: flex;
+    justify-content: center;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     border-radius: 10px;
-    width: 80vw; /* Define a largura como 80% da largura da janela de visualização */
+    width: 100%; /* Define a largura como 80% da largura da janela de visualização */
     max-width: 410px; /* Define uma largura máxima de 410 pixels */
+    margin-bottom: 40px;
 }
 .card:hover {
     transform: scale(1.05);
@@ -97,10 +100,10 @@ section{
     overflow: hidden;
 }
 p{
-    margin-left: 25px;
+    
     font-weight: 400;
     justify-content: center;
-        animation: h2 3s ease-in-out forwards;
+    animation: h2 3s ease-in-out forwards;
 }
 ul{
 	list-style: none;
