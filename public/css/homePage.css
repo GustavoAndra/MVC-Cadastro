@@ -69,7 +69,6 @@ body{
     font-size: 24px;  opacity: 0; /* Começa com a opacidade 0 */
     animation: fadeIn 4s forwards; /* Animação de entrada com duração de 1.5 segundos */
 }
-
 .parallax-content p {
     color: #1a0f0f;
     font-size: 25px; 
@@ -84,11 +83,6 @@ section{
     border-radius: 10px;
     width: 80vw; /* Define a largura como 80% da largura da janela de visualização */
     max-width: 410px; /* Define uma largura máxima de 410 pixels */
-}
-
-/* A última card na linha não deve ter margem direita para evitar espaço em branco à direita */
-.card:last-child {
-    margin-right: 0;
 }
 .card:hover {
     transform: scale(1.05);
@@ -133,10 +127,7 @@ ul{
     padding: 20px 0;
     text-align: center;
   }
-  
-#copy p {
-    margin: 0;
-  }
+
   h2{
     display: flex;
     justify-content: center;

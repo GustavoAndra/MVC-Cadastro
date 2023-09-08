@@ -97,8 +97,8 @@ section{
     border-radius: 10px 10px 0 0;
 }
 .card-img-top{
-    object-fit: cover; /* Dimensiona a imagem para preencher o espaço da imagem */
-    height: 250px; /* Define a altura da imagem */
+    object-fit: cover; 
+    height: 250px; 
 }
 .card-description {
     max-height: 100px;
@@ -109,9 +109,18 @@ p{
     margin-left: 25px;
     font-weight: 400;
     justify-content: center;
+    animation: h2 3s ease-in-out forwards;
 }
 ul{
 	list-style: none;
+}
+h2{
+    justify-content: center;
+    font-family: "Arial", sans-serif;
+    font-size: 30px;
+    color: #000;
+    text-transform: uppercase;
+    animation: h2 3s ease-in-out forwards;
 }
 footer{
 	background-color: #000;
@@ -174,28 +183,3 @@ footer{
 	color: #24262b;
 	background-color: #e91e63;
 }
-#efeito{
-    font-family: "Arial", sans-serif;
-    font-size: 30px;
-    color: #FF5733;
-    text-transform: uppercase;
-    animation: efeito 4s ease-in-out forwards;
-}
-h2{
-    justify-content: center;
-    font-family: "Arial", sans-serif;
-    margin-right: 20px;
-    font-size: 30px;
-    color: #000;
-    text-transform: uppercase;
-    animation: h2 3s ease-in-out forwards;
-}
-#copy {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-#copy p {
-    margin: 0;
-  }
