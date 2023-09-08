@@ -7,12 +7,13 @@ async function showfuncionario(req, res) {
       if (!funcionario) {
         res.redirect('/HomePage'); 
     } else {
-        res.render('editefuncionario', { funcionario }); 
+        res.render('edite', { funcionario }); 
     }
   } catch (error) {
       res.status(500).send('Erro ao carregar a página de edição dos funcionários.');
   }
 }
+
 async function atualizarFuncionario(req, res) {
   const { id } = req.params;
   const { nome, pis, rg, cpf, telefone, email} = req.body;

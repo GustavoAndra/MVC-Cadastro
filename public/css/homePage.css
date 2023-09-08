@@ -87,18 +87,19 @@ section{
 .card {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
     border-radius: 10px;
-    height: 100%;
+    width: 80vw; /* Define a largura como 80% da largura da janela de visualização */
+    max-width: 410px; /* Define uma largura máxima de 410 pixels */
 }
 .card:hover {
-    transform: scale(1.05); /* Aumenta o tamanho do card ao passar o mouse */
+    transform: scale(1.05);
 }
 .card img {
     width: 100%;
-    height: auto;
+    max-height: 400px ;
     display: block;
 }
 .card-description {
-    max-height: 100px; /* Ajuste a altura máxima do conteúdo */
+    max-height: 200px; 
     overflow: hidden;
 }
 p{

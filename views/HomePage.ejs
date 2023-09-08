@@ -1,111 +1,96 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<head>
     <%- include('layout/default/headLogado.ejs') %>
+</head>
 <body>
-  
-  <%- include('layout/default/headerLogado.ejs') %>
+    <%- include('layout/default/headerLogado.ejs') %>
 
-   <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
-    <div class="parallax-content">
-      <h2> Seja muito bem-vindo <%= nome %></h2> 
-
-        <p>É com grande alegria que recebemos você em nossa comunidade tecnológica.</p>
-    </div>
-</section>
-
-<main>
-  <section id="agradecimento" class="d-flex align-items-center">
-    <div class="container-fluid">
-        <div class="row">
-            <h2 class="col-md-12">Bem-vindo à nossa comunidade tecnológica</h2>
-            <div class="col-md-6">
-                <p>
-                    Parabéns! Agora você faz parte de nossa comunidade tecnológica, onde a inovação e a paixão pela tecnologia são a essência de nossa jornada. Esperamos que você se sinta em casa enquanto explora nossas páginas, descobre conteúdo inspirador, se mantém atualizado sobre as últimas tendências do setor e se envolve em discussões instigantes.
-
-                    Estamos aqui para apoiá-lo em sua busca por conhecimento e crescimento. Sinta-se à vontade para explorar, interagir e compartilhar suas ideias. Juntos, podemos criar o futuro da tecnologia.
-
-                    Novamente, seja muito bem-vindo à família EvoTech Solutions!
-                </p>
-            </div>
-            <div class="col-md-6">
-                <p>
-                    Recebemos você com alegria em nossa comunidade tecnológica. Aqui, a inovação é a nossa linguagem comum, e juntos, estamos prontos para explorar as fronteiras da tecnologia.
-
-                    À medida que você navega por nossas páginas, encontrará artigos inspiradores, informações atualizadas sobre as tendências do mercado e oportunidades para participar de discussões enriquecedoras.
-
-                    Esteja ciente de que estamos sempre à disposição para apoiar seu crescimento e aprendizado. Sinta-se à vontade para explorar, interagir e compartilhar suas ideias conosco.
-
-                    Mais uma vez, seja bem-vindo à comunidade EvoTech Solutions!
-                </p>
-            </div>
+    <section class="parallax-section" style="background-image: url('<%= locals.imagesPath %>/Empire.jpg %>');">
+        <div class="parallax-content text-center text-lg-left">
+            <h2>Seja muito bem-vindo <%= nome %></h2>
+            <p>É com grande alegria que recebemos você em nossa comunidade tecnológica.</p>
         </div>
-    </div>
-   
-</section>
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <figure>
-        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa">
-      </figure>
-    </div>
-    <div class="col-md-6">
-      <figure>
-        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa">
-      </figure>
-    </div>
-  </div>
-</div>
-
-
-               
-  
-    
-    <section id="funcionario-details">
-      <h2 class="text-center">Controle aqui seus Funcionários</h2>
-      <div class="container">
-        <div class="row">
-          <% if (success) { %>
-            <% if (funcionarios.length > 0) { %>
-              <% funcionarios.forEach(funcionario => { %>
-                <div class="col-md-4">
-                  <div class="card mb-4">
-                    <img src="/img/<%= funcionario.arquivo %>" alt="Imagem não encontrada" class="card-img-top">
-                    <div class="card-body">
-                      <p class="card-title"><strong>Nome:</strong> <%= funcionario.nome %></p>
-                      <p class="card-text"><strong>Email:</strong> <%= funcionario.email %></p>
-                      <p class="card-text"><strong>PIS:</strong> <%= funcionario.pis %></p>
-                      <p class="card-text"><strong>RG:</strong> <%= funcionario.rg %></p>
-                      <p class="card-text"><strong>CPF:</strong> <%= funcionario.cpf %></p>
-                      <p class="card-text"><strong>Telefone:</strong> <%= funcionario.telefone %></p>
-                    </div>
-                    <div class="card-footer text-right">
-                      <div class="card-footer d-flex justify-content-between">
-                        <a href="/editar/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
-                            <i class="fas fa-edit"></i> Editar
-                        </a>
-                        <form action="/funcionario/delete/<%= funcionario.idfuncionario %>" method="post">
-                            <button type="submit" class="btn btn-danger btn-excluir">
-                                <i class="fas fa-trash"></i> Excluir
-                            </button>
-                        </form>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-              <% }); %>
-            <% } else { %>
-              <p class="col-12">Nenhum funcionário cadastrado.</p>
-            <% } %>
-          <% } else { %>
-            <p class="col-12">Erro ao carregar funcionários.</p>
-          <% } %>
-        </div>
-      </div>
     </section>
-    
-    
-</main>
+
+    <main>
+        <section id="agradecimento" class="d-flex align-items-center">
+            <div class="container">
+                <div class="row">
+                    <h2 class="col-12">Bem-vindo à nossa comunidade tecnológica</h2>
+                    <div class="col-lg-6">
+                        <p>
+                            Parabéns! Agora você faz parte de nossa comunidade tecnológica, onde a inovação e a paixão pela tecnologia são a essência de nossa jornada. Esperamos que você se sinta em casa enquanto explora nossas páginas, descobre conteúdo inspirador, se mantém atualizado sobre as últimas tendências do setor e se envolve em discussões instigantes.
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            Recebemos você com alegria em nossa comunidade tecnológica. Aqui, a inovação é a nossa linguagem comum, e juntos, estamos prontos para explorar as fronteiras da tecnologia.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <figure>
+                        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa" class="img-fluid">
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa" class="img-fluid">
+                    </figure>
+                </div>
+            </div>
+        </div>
+
+        <section id="funcionario-details">
+            <h2 class="text-center">Controle aqui seus Funcionários</h2>
+            <div class="container">
+                <div class="row">
+                    <% if (success) { %>
+                    <% if (funcionarios.length > 0) { %>
+                    <% funcionarios.forEach(funcionario => { %>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <div class="card">
+                            <img src="/img/<%= funcionario.arquivo %>" alt="Imagem não encontrada" class="card-img-top">
+                            <div class="card-body">
+                                <p class="card-title"><strong>Nome:</strong> <%= funcionario.nome %></p>
+                                <p class="card-text"><strong>Email:</strong> <%= funcionario.email %></p>
+                                <p class="card-text"><strong>PIS:</strong> <%= funcionario.pis %></p>
+                                <p class="card-text"><strong>RG:</strong> <%= funcionario.rg %></p>
+                                <p class="card-text"><strong>CPF:</strong> <%= funcionario.cpf %></p>
+                                <p class="card-text"><strong>Telefone:</strong> <%= funcionario.telefone %></p>
+                            </div>
+                            <div class="card-footer text-right">
+                                <div class="card-footer d-flex justify-content-between">
+                                    <a href="/editar/funcionario/<%= funcionario.idfuncionario %>" class="btn btn-primary btn-edit">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                    <form action="/delete/funcionario/<%= funcionario.idfuncionario %>" method="post">
+                                        <button type="submit" class="btn btn-danger btn-excluir">
+                                            <i class="fas fa-trash"></i> Excluir
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <% } else { %>
+                    <p class="col-12">Nenhum funcionário cadastrado.</p>
+                    <% } %>
+                    <% } else { %>
+                    <p class="col-12">Erro ao carregar funcionários.</p>
+                    <% } %>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <%- include('layout/default/footer.ejs') %>
 </body>
 <script src="<%= locals.jsPath %>/home.js"></script>

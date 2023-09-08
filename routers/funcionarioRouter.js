@@ -6,7 +6,7 @@ const multer = require('multer');
 const upload = multer({ dest: './img' }); 
 
 // Rota para exibir a página de cadastro de funcionários
-router.get('/funcionario',funcionarioController.showHomePage);
+router.get('/exibir/funcionario',funcionarioController.showHomePage);
 
 // Rota para inserir um novo funcionário
 router.post('/register/funcionario', upload.single('arquivo'),funcionarioController.inserirFuncionario);
@@ -15,12 +15,12 @@ router.post('/register/funcionario', upload.single('arquivo'),funcionarioControl
 router.get('/listar/funcionario',upload.single('arquivo'), funcionarioController.listarDetalhesFuncionario);
 
 // Rota para excluir um funcionário pelo ID
-router.post('/funcionario/delete/:id', funcionarioController.excluirFuncionario);
+router.post('/delete/funcionario/:id', funcionarioController.excluirFuncionario);
 
 // Rota para exibir o formulário de edição de um funcionário pelo ID
-router.get('/editar/:id', editeController.showfuncionario);
+router.get('/editar/funcionario/:id', editeController.showfuncionario);
 
 // Rota para processar a atualização de um funcionário pelo ID
-router.post('/editar/:id', upload.single('arquivo'), editeController.atualizarFuncionario);
+router.post('/atualizar/funcionario/:id', upload.single('arquivo'), editeController.atualizarFuncionario);
 
 module.exports = router;

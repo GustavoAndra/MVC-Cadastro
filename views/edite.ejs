@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <%- include('layout/default/headLogado.ejs') %>
+    <link rel="stylesheet" href="/css/funcionario.css">
+<body>
+    <%- include('layout/default/headerLogado.ejs') %>
+    <section class="container">
+        <h2>Editar Funcionário</h2>
+        <form action="/atualizar/funcionario/<%= funcionario.idfuncionario %>" method="post" enctype="multipart/form-data" id="formulario-cadastro" class="form">
+            
+            <div class="input-box">
+             <input for="nome" type="text" id="nome" name="nome" value="<%= funcionario.nome %>"><br>
+            </div>
+
+            <div class="input-box">
+                <input for="email" type="text" id="email" name="email" value="<%= funcionario.email %>"><br>
+            </div>
+            <div class="input-box">
+                <input for="pis" type="text" id="pis" name="pis" value="<%= funcionario.pis %>"><br>
+            </div>
+        
+            <div class="input-box">
+            <input for="rg" type="text" id="rg" name="rg" value="<%= funcionario.rg %>"><br>
+            </div>
+
+            <div class="input-box"> 
+                <input for="cpf" type="text" id="cpf" name="cpf" value="<%= funcionario.cpf %>"><br>
+            </div>
+           
+            <div class="input-box">
+                 <input for="telefone" type="text" id="telefone" name="telefone" value="<%= funcionario.telefone %>"><br>
+             </div>
+           
+              
+            <div class="input-box">
+                <input for="arquivo" type="file" id="arquivo" name="arquivo" value="<%= funcionario.telefone %>"><br>
+            </div>
+               
+            <button type="submit">Atualizar</button>
+        </form>
+    </section>
+    <%- include('layout/default/footer.ejs') %>
+</body>
+</html>
