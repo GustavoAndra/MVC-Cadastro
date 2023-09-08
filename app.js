@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
@@ -19,27 +20,21 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Configuração do express-session
 app.use(cookieParser());
-app.use(session({
-    secret: 'info63',
-    resave: false,
-    saveUninitialized: true,
-    cookie: {maxAge: 600000} 
-}));
-app.use(flash());
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET,
+        resave: true,
+        saveUninitialized: true,
+        cookie: { maxAge: parseInt(process.env.SESSION_COOKIE_MAX_AGE) }
+    })
+);
 
+app.use(flash());
 app.locals = {
     stylesPath: '/styles',   // Caminho para os arquivos de estilo
     imagesPath: '/img',   // Caminho para as imagens
     jsPath: '/js'            // Caminho para os arquivos JavaScript
 };
-
-const {
-    BASE_URL,
-    DB_HOST,
-    DB_USER_PASS,
-    DB_PORT,
-    DB_DATABASE
-} = require('./config');
 
 // Rotas
 const homeRouter = require('./routers/homeRouter');

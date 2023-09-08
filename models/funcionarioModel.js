@@ -1,40 +1,29 @@
-const mysql = require('mysql2/promise');
-const connectionConfig = {
-    host: 'containers-us-west-37.railway.app',
-    user: 'root',
-    password: 'Iax6uC5rPPFtZoeDYPOv',
-    database: 'railway',
-    port: 7103
-};
+const db = require('./db');
 
+// Função para inserir um novo funcionário no banco de dados
 const inserirFuncionario = async (nome, pis, rg, cpf, telefone, email, arquivo, usuarioId) => {
-    const connection = await mysql.createConnection(connectionConfig);
-
     try {
+        const connection = await db.connect();
         const [insertResult] = await connection.execute(
             'INSERT INTO funcionario (nome, pis, rg, cpf, telefone, email, arquivo, usuario_idusuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
             [nome, pis, rg, cpf, telefone, email, arquivo, usuarioId]
         );
-        
+
         if (insertResult.affectedRows === 1) {
             return { success: true, message: 'Funcionário inserido com sucesso.' };
         } else {
-            return { success: false, message: 'Erro ao inserir funcionário.'};
+            return { success: false, message: 'Erro ao inserir funcionário.' };
         }
     } catch (error) {
-        
-        console.error('Erro no modelo ao inserir funcionário:', error);    
-        return { success: false, message: 'Erro ao inserir funcionário.' };
-    } 
-    finally {
-        connection.end();
+        console.error('Erro no modelo ao inserir funcionário:', error);
+        throw error;
     }
 };
 
+// Função para excluir um funcionário por ID
 const excluirFuncionarioPorId = async (funcionarioId) => {
-    const connection = await mysql.createConnection(connectionConfig);
-
     try {
+        const connection = await db.connect();
         const [deleteResult] = await connection.execute(
             'DELETE FROM funcionario WHERE idfuncionario = ?',
             [funcionarioId]
@@ -47,81 +36,71 @@ const excluirFuncionarioPorId = async (funcionarioId) => {
         }
     } catch (error) {
         console.error('Erro ao excluir funcionário:', error);
-        throw error; 
-    } finally {
-        connection.end();
+        throw error;
     }
 };
 
+// Função para listar funcionários por ID de usuário
 const listarFuncionarioPorUsuario = async (usuarioId) => {
-    const connection = await mysql.createConnection(connectionConfig);
-
     try {
+        const connection = await db.connect();
         const [rows] = await connection.execute(
             'SELECT * FROM funcionario WHERE usuario_idusuario = ?',
             [usuarioId]
         );
 
-        return { success: true, funcionarios: rows }; // Retornar a matriz completa
+        return { success: true, funcionarios: rows };
     } catch (error) {
         console.error('Erro ao listar funcionários:', error);
-        return { success: false, message: 'Erro ao listar funcionários.' };
-    } finally {
-        connection.end();
+        throw error;
     }
 };
 
+// Função para atualizar os dados de um funcionário
 const atualizarFuncionario = async (id, newData, req) => {
     const { nome, pis, rg, cpf, telefone, email } = newData;
-    const connection = await mysql.createConnection(connectionConfig);
-    const arquivo = req.file; // Certifique-se de que o middleware multer esteja configurado para lidar com arquivos
-    
+    const connection = await db.connect();
+    const arquivo = req.file;
+
     try {
         let updateQuery = 'UPDATE funcionario SET nome = ?, pis = ?, rg = ?, cpf = ?, telefone = ?, email = ?';
         const updateValues = [nome, pis, rg, cpf, telefone, email];
 
-        // Verifique se um novo arquivo de imagem foi fornecido
         if (arquivo) {
             updateQuery += ', arquivo = ?';
-            updateValues.push(arquivo.filename); // Use o nome do arquivo retornado pelo Multer
+            updateValues.push(arquivo.filename);
         }
-  
+
         updateQuery += ' WHERE idfuncionario = ?';
         updateValues.push(id);
-  
+
         await connection.execute(updateQuery, updateValues);
     } catch (error) {
         console.error('Erro ao editar funcionário:', error);
         throw error;
-    } finally {
-        connection.end();
     }
 };
 
-
-  
-
- async function obterFuncionario(idfuncionario) {
+// Função para obter um funcionário por ID
+async function obterFuncionario(idfuncionario) {
     const sql = 'SELECT * FROM funcionario WHERE idfuncionario = ?';
     const values = [idfuncionario];
-  
+
     try {
-      const connection = await mysql.createConnection(connectionConfig);
-      const [rows] = await connection.query(sql, values);
-  
-      if (rows.length === 1) {
-        // Retorna o funcionário encontrado
-        return rows[0];
-      } else {
-        // Retorna null se o funcionário não for encontrado
-        return null;
-      }
+        const connection = await db.connect();
+        const [rows] = await connection.query(sql, values);
+
+        if (rows.length === 1) {
+            return rows[0];
+        } else {
+            return null;
+        }
     } catch (error) {
-      console.error('Erro ao buscar funcionario por ID:', error);
-      throw error;
+        console.error('Erro ao buscar funcionário por ID:', error);
+        throw error;
     }
-  };
-  
+}
+
 module.exports = {
     inserirFuncionario,
     excluirFuncionarioPorId,
