@@ -33,28 +33,39 @@
         </section>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <figure>
-                        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa" class="img-fluid">
-                    </figure>
-                </div>
-                <div class="col-md-6">
-                    <figure>
-                        <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa" class="img-fluid">
-                    </figure>
-                </div>
+          <div class="row">
+            <div class="col-md-6"> 
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat maxime esse saepe tempore quo ipsam consequatur cupiditate illum possimus, sed accusamus nam itaque doloribus qui enim minima nulla neque quam?</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, vero? Magni illum velit ex, laborum eaque, voluptas iusto maxime maiores commodi, tempora numquam neque. Dignissimos debitis placeat eveniet nisi! Laboriosam!</p>
             </div>
-        </div>
+              <div class="col-md-6">
+                  <figure>
+                      <img src="<%= locals.imagesPath %>/imagem-homepage.jpg" alt="Logo da Empresa" class="img-fluid">
+                  </figure> 
+              </div>
+          </div>  
 
+          <div class="row">
+            <div class="col-md-6"> 
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat maxime esse saepe tempore quo ipsam consequatur cupiditate illum possimus, sed accusamus nam itaque doloribus qui enim minima nulla neque quam?</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat maxime esse saepe tempore quo ipsam consequatur cupiditate illum possimus, sed accusamus nam itaque doloribus qui enim minima nulla neque quam?</p>
+            </div>
+              <div class="col-md-6">
+                  <figure>
+                      <img src="<%= locals.imagesPath %>/imagem-homepage2.jpg" alt="Logo da Empresa" class="img-fluid">
+                  </figure> 
+              </div>
+          </div>  
+       </div>
+      
         <section id="funcionario-details">
             <h2 class="text-center">Controle aqui seus Funcionários</h2>
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <% if (success) { %>
                     <% if (funcionarios.length > 0) { %>
                     <% funcionarios.forEach(funcionario => { %>
-                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="col-lg-4 col-md-6">
                         <div class="card">
                             <img src="/img/<%= funcionario.arquivo %>" alt="Imagem não encontrada" class="card-img-top">
                             <div class="card-body">
@@ -78,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                  </div>
                     <% }); %>
                     <% } else { %>
                     <p class="col-12">Nenhum funcionário cadastrado.</p>

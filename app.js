@@ -23,7 +23,7 @@ app.use(session({
     secret: 'info63',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 } // Configure o tempo de expiração do cookie da sessão conforme necessário
+    cookie: {maxAge: 600000} 
 }));
 app.use(flash());
 
