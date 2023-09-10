@@ -12,7 +12,7 @@ router.get('/exibir/funcionario',funcionarioController.showHomePage);
 router.post('/register/funcionario', upload.single('arquivo'),funcionarioController.inserirFuncionario);
 
 // Rota para listar um funcionário pelo ID
-router.get('/listar/funcionario',upload.single('arquivo'), funcionarioController.listarDetalhesFuncionario);
+router.get('/listar/funcionario', funcionarioController.listarDetalhesFuncionario);
 
 // Rota para excluir um funcionário pelo ID
 router.post('/delete/funcionario/:id', funcionarioController.excluirFuncionario);
