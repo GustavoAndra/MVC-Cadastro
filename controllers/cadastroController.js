@@ -32,5 +32,4 @@ class CadastroController {
     }
 }
 
-
 module.exports = new CadastroController();

@@ -37,7 +37,7 @@ class UsuarioController {
     //Função para deslogar o usuário
     async logout(req, res) {
         delete req.session.user;
-        res.redirect('/HomePage');
+        res.redirect('/');
     }
 }
 

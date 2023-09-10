@@ -1,4 +1,4 @@
-const isAuthenticated = require('./midlewareController');
+const isAuthenticated = require('../middleware/auth');
 const funcionarioModel = require('../models/funcionarioModel');
 
 module.exports = {

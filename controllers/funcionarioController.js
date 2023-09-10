@@ -1,6 +1,6 @@
 // Importar o modelo de funcionário e os middlewares necessários
 const funcionarioModel = require('../models/funcionarioModel');
-const isAuthenticated = require('./midlewareController'); 
+const isAuthenticated = require('../middleware/auth'); 
 const multer = require('multer'); // Importe o multer para lidar com o upload de arquivos
 
 // Configurar o armazenamento para o Multer

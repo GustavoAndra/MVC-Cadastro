@@ -24,7 +24,7 @@ module.exports = {
                 nome: usuario.nome,
                 email: usuario.email,
             },
-            process.env.JWT_SECRET, // Use process.env.JWT_SECRET para acessar a variável de ambiente
+            process.env.JWT_SECRET, 
             {
                 expiresIn: '280000', 
             }
