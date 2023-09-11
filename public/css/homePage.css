@@ -196,4 +196,25 @@ footer{
 .footer-col .social-links a:hover{
 	color: #24262b;
 	background-color: #e91e63;
+} #scrollToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    transition: opacity 0.3s;
+}
+#scrollToTopButton {
+    display: block;
+    padding: 20px 15px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+#scrollToTopButton:hover {
+    background-color: #0056b3;
+}
+.hidden {
+    display: none;
 }
