@@ -3,7 +3,7 @@ const router = express.Router();
 const funcionarioController = require('../controllers/funcionarioController');
 const editeController = require('../controllers/editeFuncionarioController');
 const multer = require('multer');
-const upload = multer({ dest: './img' }); 
+const upload = multer({dest: './public/img'}); 
 
 // Rota para exibir a página de cadastro de funcionários
 router.get('/exibir/funcionario',funcionarioController.showHomePage);
@@ -21,6 +21,6 @@ router.post('/delete/funcionario/:id', funcionarioController.excluirFuncionario)
 router.get('/editar/funcionario/:id', editeController.showfuncionario);
 
 // Rota para processar a atualização de um funcionário pelo ID
-router.post('/atualizar/funcionario/:id', upload.single('arquivo'), editeController.atualizarFuncionario);
+router.post('/atualizar/funcionario/:id',upload.single('arquivo'), editeController.atualizarFuncionario);
 
 module.exports = router;

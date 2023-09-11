@@ -5,7 +5,7 @@ const multer = require('multer'); // Importe o multer para lidar com o upload de
 
 // Configurar o armazenamento para o Multer
 const storage = multer.diskStorage({
-  destination: './img', // Diretório de destino para armazenar as imagens enviadas
+  destination: './public/img', // Diretório de destino para armazenar as imagens enviadas
   filename: (req, file, cb) => {
     // Gera um nome de arquivo único para evitar colisões
     const hash = Math.random().toString(36).substring(7);

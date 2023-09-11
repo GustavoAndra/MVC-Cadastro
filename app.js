@@ -14,7 +14,6 @@ app.use(express.json());
 
 // Configuração de arquivos estáticos
 app.use(express.static(path.join(__dirname, "public")));
-app.use('/img', express.static(__dirname + '/img'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -32,7 +31,7 @@ app.use(
 app.use(flash());
 app.locals = {
     stylesPath: '/styles',   // Caminho para os arquivos de estilo
-    imagesPath: '/img',   // Caminho para as imagens
+    imagesPath: '/imagens',   // Caminho para as imagens
     jsPath: '/js'            // Caminho para os arquivos JavaScript
 };
 
